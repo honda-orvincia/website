@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>株式会社ORVINCIA | 0→1特化型フランチャイズ構築支援</title>
+
+    <!-- Tailwind CSS CDN -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+
+        body {
+
+            font-family: 'Noto+Sans+JP', sans-serif;
+
+            scroll-behavior: smooth;
+
+        }
+
+        .font-black { font-weight: 900; }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        
+
+        @keyframes bounce-slow {
+
+            0%, 100% { transform: translateY(0); }
+
+            50% { transform: translateY(-10px); }
+
+        }
+
+        .animate-bounce-slow { animation: bounce-slow 4s ease-in-out infinite; }
+
+        
+
+        @keyframes pulse-gentle {
+
+            0%, 100% { transform: scale(1); }
+
+            50% { transform: scale(1.02); }
+
+        }
+
+        .animate-pulse-gentle { animation: pulse-gentle 3s ease-in-out infinite; }
+
+
+
+        .modal-active { overflow: hidden; }
+
+        .modal-enter { animation: zoomIn 0.3s ease-out forwards; }
+
+        @keyframes zoomIn {
+
+            from { opacity: 0; transform: scale(0.95); }
+
+            to { opacity: 1; transform: scale(1); }
+
+        }
+
+
+
+        /* カスタムグラデーション背景 */
+
+        .hero-bg {
+
+            background: radial-gradient(circle at 70% 30%, rgba(186, 230, 253, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+
+        }
+
+    </style>
+
+</head>
+
+<body class="bg-white text-slate-800 antialiased overflow-x-hidden">
+
+
+
+    <!-- ナビゲーション -->
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4 md:py-8">
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-10 flex justify-between items-center text-sky-950 font-black">
+
+            <div class="flex items-center cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+
+                <span class="text-xl md:text-2xl tracking-tighter">株式会社ORVINCIA</span>
+
+            </div>
+
+
+
+            <div class="hidden lg:flex items-center space-x-10 font-black">
+
+                <a href="#mission" class="text-sm xl:text-base text-slate-700 hover:text-sky-600 transition-colors">想い・理念</a>
+
+                <a href="#services" class="text-sm xl:text-base text-slate-700 hover:text-sky-600 transition-colors">支援内容</a>
+
+                <a href="#strengths" class="text-sm xl:text-base text-slate-700 hover:text-sky-600 transition-colors">弊社の強み</a>
+
+                <a href="#company" class="text-sm xl:text-base text-slate-700 hover:text-sky-600 transition-colors">会社概要</a>
+
+                <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="bg-sky-950 text-white px-8 py-3 rounded-2xl text-sm xl:text-base font-black hover:bg-sky-800 transition-all shadow-xl border border-sky-800">
+
+                    無料相談
+
+                </button>
+
+            </div>
+
+
+
+            <button class="lg:hidden p-2" onclick="toggleMenu()">
+
+                <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                    <path id="menu-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- モバイルメニュー -->
+
+        <div id="mobile-menu" class="hidden lg:hidden absolute top-full left-0 w-full bg-white border-b border-sky-100 shadow-xl p-6 space-y-4 font-black">
+
+            <a href="#mission" onclick="toggleMenu()" class="block w-full py-3 text-lg text-slate-700 border-b border-sky-50">想い・理念</a>
+
+            <a href="#services" onclick="toggleMenu()" class="block w-full py-3 text-lg text-slate-700 border-b border-sky-50">支援内容</a>
+
+            <a href="#strengths" onclick="toggleMenu()" class="block w-full py-3 text-lg text-slate-700 border-b border-sky-50">弊社の強み</a>
+
+            <a href="#company" onclick="toggleMenu()" class="block w-full py-3 text-lg text-slate-700 border-b border-sky-50">会社概要</a>
+
+            <button onclick="toggleMenu(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="w-full bg-sky-950 text-white py-4 rounded-2xl font-black text-lg">無料相談</button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ヒーローセクション -->
+
+    <section class="hero-bg relative pt-44 pb-20 md:pt-60 md:pb-40 overflow-hidden text-sky-950">
+
+        <div class="absolute -top-40 -left-40 w-[600px] h-[600px] bg-sky-100/30 rounded-full blur-[120px] -z-10"></div>
+
+        
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col items-center lg:items-start text-center lg:text-left">
+
+            <div class="space-y-10 md:space-y-14 max-w-5xl">
+
+                <div class="inline-flex items-center gap-3 px-6 py-2.5 bg-white text-sky-700 rounded-full text-xs md:text-sm font-black tracking-widest border border-sky-200 shadow-sm mx-auto lg:mx-0">
+
+                    理念を仕組み化し、収益化を加速させる支援
+
+                </div>
+
+                <h1 class="text-5xl md:text-7xl lg:text-9xl font-black leading-[1.15] md:leading-[1.1] tracking-tight text-balance">
+
+                    加盟店の売上まで<br>責任を持つ<br>
+
+                    <span class="text-sky-500 relative inline-block">
+
+                        FC本部支援会社です！
+
+                        <span class="absolute -bottom-2 md:-bottom-4 left-0 w-full h-1.5 md:h-3 bg-sky-200/40 -z-10"></span>
+
+                    </span>
+
+                </h1>
+
+                <div class="space-y-6 md:space-y-8 font-black">
+
+                    <p class="text-xl md:text-3xl lg:text-4xl text-sky-600 leading-tight">
+
+                        社長の「直感」を、誰でも再現できる仕組みへ。
+
+                    </p>
+
+                    <p class="text-lg md:text-2xl text-slate-600 leading-relaxed max-w-4xl font-medium text-balance">
+
+                        「マニュアルを納品して終わり」のコンサルタントではありません。<br>
+
+                        理念に根ざした本部構築と、自社開発AIによる営業支援を組み合わせ、
+
+                        加盟店が収益化するまで泥臭く並走し続けます。
+
+                    </p>
+
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4 md:pt-6 font-black justify-center lg:justify-start">
+
+                    <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" class="bg-sky-500 text-white px-10 md:px-14 py-5 md:py-7 rounded-2xl md:rounded-[30px] font-black text-lg md:text-2xl flex items-center justify-center space-x-3 hover:bg-sky-600 hover:shadow-2xl hover:translate-y-[-4px] transition-all shadow-xl group">
+
+                        <span>構築支援の内容を見る</span>
+
+                        <svg class="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+
+                    </button>
+
+                    <button onclick="document.getElementById('mission').scrollIntoView({behavior:'smooth'})" class="bg-white text-sky-950 border-2 border-sky-100 px-10 md:px-14 py-5 md:py-7 rounded-2xl md:rounded-[30px] font-black text-lg md:text-2xl hover:bg-sky-50 transition-all flex items-center justify-center shadow-sm">
+
+                        私たちのこだわり
+
+                    </button>
+
+                </div>
+
+                
+
+                <div class="flex items-center gap-10 md:gap-16 pt-12 md:pt-16 border-t border-sky-100 font-black overflow-x-auto no-scrollbar">
+
+                    <div class="shrink-0">
+
+                        <div class="text-3xl md:text-5xl text-sky-900 tracking-tighter">70店舗+</div>
+
+                        <div class="text-[10px] md:text-xs text-slate-400 tracking-widest mt-1 uppercase">支援実績</div>
+
+                    </div>
+
+                    <div class="shrink-0">
+
+                        <div class="text-3xl md:text-5xl text-sky-900 tracking-tighter">6.3億円</div>
+
+                        <div class="text-[10px] md:text-xs text-slate-400 tracking-widest mt-1 uppercase">最高年間実績</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 私たちの想い（集合天才） -->
+
+    <section id="mission" class="py-24 md:py-32 bg-sky-50/50 relative overflow-hidden text-sky-950 font-black">
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+
+            <div class="max-w-5xl mx-auto space-y-12 md:space-y-16 text-center lg:text-left">
+
+                <div class="space-y-6">
+
+                    <h2 class="text-sm md:text-base font-black text-sky-600 tracking-[0.5em] uppercase justify-center lg:justify-start flex items-center gap-3">
+
+                        <span class="w-8 h-px bg-sky-200 hidden lg:block"></span> Our Philosophy
+
+                    </h2>
+
+                    <h3 class="text-4xl md:text-7xl font-black leading-[1.2] tracking-tight text-balance">
+
+                        フランチャイズの本質は、<br class="md:hidden">「集合天才」である。
+
+                    </h3>
+
+                </div>
+
+                
+
+                <div class="space-y-8 md:space-y-10 leading-[1.8] md:leading-[2] font-medium text-lg md:text-2xl text-slate-700 text-balance">
+
+                    <p>
+
+                        成功事例、失敗事例が共有される場作りこそが本部の仕事です。
+
+                        社長の想いが届かない本部は、いずれブランドの勢いを失います。
+
+                    </p>
+
+                    <p>
+
+                        私たちは単なるアドバイザーや広告支援事業者ではありません。
+
+                        加盟店の売上が上がり長期的に繁栄するところまで支援する「実働パートナー」であることを約束します。
+
+                    </p>
+
+                    <div class="bg-white p-8 md:p-12 rounded-[32px] md:rounded-[48px] border-l-[10px] md:border-l-[16px] border-sky-500 shadow-xl shadow-sky-100/50 text-left mx-auto lg:mx-0">
+
+                        <p class="text-sky-950 font-black text-xl md:text-3xl leading-relaxed italic">
+
+                            「私たちは、現場の声をAIで解析・分析することで、加盟店の売上向上までサポートします。単なるアドバイザーではなく、加盟店がしっかりと収益を上げられるまで共に汗を流す『実働パートナー』であることを約束します。」
+
+                        </p>
+
+                        <div class="mt-8 md:mt-12 pt-8 md:pt-10 border-t border-sky-50 flex flex-col md:flex-row md:items-center justify-between gap-6">
+
+                            <div class="flex items-center gap-4">
+
+                                <div class="w-14 h-14 md:w-16 md:h-16 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 shrink-0">
+
+                                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z"></path></svg>
+
+                                </div>
+
+                                <div>
+
+                                    <p class="text-[10px] md:text-sm font-black text-sky-500 uppercase tracking-widest">Representative Director</p>
+
+                                    <p class="text-2xl md:text-3xl font-black text-sky-950">本多 亮也</p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="inline-flex items-center gap-2 px-6 py-3 bg-sky-50 rounded-2xl text-sky-700 font-black text-xs md:text-sm">
+
+                                <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+
+                                <span>教育ベンチャーにてFC立ち上げ・全22店舗展開を完遂</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 事業内容 -->
+
+    <section id="services" class="py-24 md:py-40 text-sky-950 font-black">
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-24 gap-8 text-center md:text-left font-black">
+
+                <div class="space-y-6">
+
+                    <h2 class="text-sm md:text-base font-black text-sky-600 tracking-[0.5em] uppercase">支援プログラム</h2>
+
+                    <h3 class="text-3xl md:text-5xl font-black tracking-tighter leading-tight font-black">「理念」を「パッケージ」へ。</h3>
+
+                </div>
+
+                <p class="text-slate-500 font-bold text-base md:text-xl max-w-sm leading-relaxed font-black">強固なパッケージと、自走する営業組織。この2つがFC展開を成功へと導きます。</p>
+
+            </div>
+
+
+
+            <div class="grid lg:grid-cols-3 gap-8 md:gap-12" id="services-grid">
+
+                <!-- JSで動的に生成 -->
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 初期構築の重要性 -->
+
+    <section class="py-24 md:py-32 bg-white relative overflow-hidden font-black text-sky-950">
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-10 font-black">
+
+            <div class="bg-sky-950 rounded-[40px] md:rounded-[80px] p-10 md:p-24 lg:p-32 text-white relative overflow-hidden shadow-4xl group">
+
+                <div class="absolute top-0 right-0 w-full md:w-1/2 h-full bg-gradient-to-l from-sky-800/30 to-transparent -z-0"></div>
+
+                
+
+                <div class="relative z-10 grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+
+                    <div class="lg:col-span-7 space-y-8 md:space-y-12">
+
+                        <div class="inline-flex items-center gap-3 px-6 py-2.5 bg-sky-500/20 text-sky-400 rounded-full text-xs md:text-sm font-black tracking-widest border border-sky-400/20">
+
+                            立ち上げ期の落とし穴
+
+                        </div>
+
+                        <h3 class="text-3xl md:text-7xl font-black leading-[1.2] md:leading-[1.1] tracking-tighter text-white">
+
+                            その拡大プラン、<br>
+
+                            <span class="text-sky-400 italic font-black text-sky-400">成長を止める「壁」</span>に<br>なっていませんか？
+
+                        </h3>
+
+                        <div class="space-y-8 text-sky-100/80 font-medium text-base md:text-xl leading-relaxed md:leading-[1.8] font-black">
+
+                            <p>
+
+                                「理念をマニュアル化する作業」は、つい後回しにされがちです。<br>
+
+                                しかし、初期の構築を曖昧にしたまま拡大を急ぐと、品質の低下や加盟店トラブルが急増し、修復不可能なダメージを負うことになります。
+
+                            </p>
+
+                            <div class="text-white font-black text-xl md:text-3xl border-l-8 border-sky-500 pl-6 md:pl-8 py-2 font-black">
+
+                                「今のモデルで本当に拡大していいのか？」<br class="hidden md:block">
+
+                                一度プロの視点で、仕組みの総点検をしませんか。
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="lg:col-span-5 font-black">
+
+                        <div class="bg-white/5 backdrop-blur-2xl border border-white/10 p-8 md:p-12 rounded-[40px] md:rounded-[60px] space-y-8 md:space-y-10 group-hover:scale-[1.02] transition-transform duration-700 shadow-2xl text-white font-black">
+
+                            <h4 class="text-xl md:text-2xl font-black flex items-center gap-3 text-white">
+
+                                0→1で陥りやすいリスク
+
+                            </h4>
+
+                            <ul class="space-y-6 font-bold">
+
+                                <li class="flex items-start gap-4">
+
+                                    <div class="w-6 h-6 rounded-full bg-red-500/30 flex items-center justify-center text-red-400 mt-1 flex-shrink-0 font-black">✕</div>
+
+                                    <div>
+
+                                        <div class="text-lg font-black font-black">「社長しか売れない」属人化</div>
+
+                                        <div class="text-sm opacity-60 mt-1">商談が社長個人に依存し、他の担当では成約できない</div>
+
+                                    </div>
+
+                                </li>
+
+                                <li class="flex items-start gap-4">
+
+                                    <div class="w-6 h-6 rounded-full bg-red-500/30 flex items-center justify-center text-red-400 mt-1 flex-shrink-0 font-black">✕</div>
+
+                                    <div>
+
+                                        <div class="text-lg font-black font-black">サポート地獄によるパンク</div>
+
+                                        <div class="text-sm opacity-60 mt-1">対応に追われ、本部の戦略業務が完全に停止する</div>
+
+                                    </div>
+
+                                </li>
+
+                                <li class="flex items-start gap-4 text-white font-black">
+
+                                    <div class="w-6 h-6 rounded-full bg-red-500/30 flex items-center justify-center text-red-400 mt-1 flex-shrink-0 font-black">✕</div>
+
+                                    <div>
+
+                                        <div class="text-lg font-black font-black font-black">「背中を見て覚えろ」の限界</div>
+
+                                        <div class="text-sm opacity-60 mt-1 font-black">ノウハウが言語化されず、店舗の品質がばらつく</div>
+
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                            <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="w-full bg-sky-500 text-white py-5 md:py-7 rounded-2xl md:rounded-[32px] font-black text-lg md:text-xl hover:bg-sky-400 transition-all shadow-3xl animate-pulse-gentle font-black">
+
+                                構築プランの妥当性を相談する
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 弊社の強み -->
+
+    <section id="strengths" class="py-24 md:py-40 bg-sky-50/30 text-sky-950 font-black">
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+
+            <div class="mb-12 md:mb-24 space-y-6 text-center md:text-left">
+
+                <h2 class="text-sm md:text-base font-black text-sky-600 tracking-[0.5em] uppercase font-black">Why ORVINCIA</h2>
+
+                <h3 class="text-4xl md:text-7xl font-black leading-tight tracking-tighter text-balance">選ばれ続ける、理由がある。</h3>
+
+            </div>
+
+
+
+            <div class="grid lg:grid-cols-12 gap-8 text-white font-black">
+
+                <div class="lg:col-span-8 bg-sky-900 p-10 md:p-16 rounded-[48px] md:rounded-[80px] flex flex-col md:flex-row gap-10 md:gap-16 items-center shadow-4xl relative overflow-hidden group font-black">
+
+                    <div class="space-y-8 relative z-10 font-black">
+
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-sky-500 rounded-2xl md:rounded-3xl flex items-center justify-center shadow-2xl font-black text-white">
+
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+
+                        </div>
+
+                        <h4 class="text-3xl md:text-4xl font-black tracking-tight">圧倒的なマーケティング力</h4>
+
+                        <p class="text-sky-100/80 font-bold text-base md:text-xl leading-relaxed">
+
+                            月間1億円規模の運用実績から、数千万ユーザーのサービス設計まで。実績のない状態から「選ばれる本部」としてのブランドを確立します。
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="lg:col-span-4 bg-sky-500 p-10 md:p-16 rounded-[48px] md:rounded-[80px] flex flex-col justify-between group shadow-4xl font-black font-black">
+
+                    <div class="space-y-8 font-black font-black">
+
+                        <div class="w-16 h-16 md:w-20 md:h-20 bg-white/20 rounded-2xl md:rounded-3xl flex items-center justify-center">
+
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+
+                        </div>
+
+                        <h4 class="text-3xl md:text-4xl font-black tracking-tight text-white font-black">自社開発AI<br>解析・改善支援</h4>
+
+                        <p class="font-bold text-lg leading-relaxed opacity-95 text-white">
+
+                            現場の声をデータで可視化。加盟店の営業力を最初から社長クラスにまで引き上げ、収益化に徹底コミットします。
+
+                        </p>
+
+                    </div>
+
+                    <div class="w-16 h-16 md:w-24 md:h-24 text-white opacity-20 mt-12 self-end">
+
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 会社概要 -->
+
+    <section id="company" class="py-24 md:py-40 text-sky-950 font-black">
+
+        <div class="max-w-6xl mx-auto px-6 md:px-10">
+
+            <div class="text-center mb-16 font-black text-sky-950">
+
+                <h2 class="text-3xl md:text-4xl font-black tracking-tight">会社概要</h2>
+
+            </div>
+
+            <div class="bg-white border border-sky-100 rounded-[40px] md:rounded-[80px] shadow-2xl shadow-sky-100/50 overflow-hidden text-sky-950 font-black">
+
+                <div class="p-10 md:p-24 space-y-12 md:space-y-16 font-bold text-slate-700 font-black font-black font-black">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 font-black font-black">
+
+                        <div class="space-y-3 font-black">
+
+                            <p class="text-[10px] md:text-xs font-black text-sky-500 tracking-widest uppercase">Company Name</p>
+
+                            <p class="text-xl md:text-2xl font-black text-slate-800">株式会社ORVINCIA</p>
+
+                        </div>
+
+                        <div class="space-y-3 font-black">
+
+                            <p class="text-[10px] md:text-xs font-black text-sky-500 tracking-widest uppercase font-black">Founded</p>
+
+                            <p class="text-xl md:text-2xl font-black text-slate-800 font-black">2026年2月2日</p>
+
+                        </div>
+
+                        <div class="md:col-span-2 space-y-3 font-black font-black font-black">
+
+                            <p class="text-[10px] md:text-xs font-black text-sky-500 tracking-widest uppercase font-black">Location</p>
+
+                            <p class="text-lg md:text-2xl font-bold text-slate-800 leading-tight">東京都渋谷区道玄坂1丁目10-8<br>渋谷道玄坂東急ビル 2F-C</p>
+
+                        </div>
+
+                        <div class="md:col-span-2 space-y-4 font-bold text-slate-600 font-black font-black">
+
+                            <p class="text-[10px] md:text-xs font-black text-sky-500 tracking-widest uppercase font-black">Business</p>
+
+                            <div class="text-lg md:text-xl space-y-3 text-sky-950">
+
+                                <div class="flex items-center gap-3 font-black font-black"><div class="w-2 h-2 rounded-full bg-sky-400"></div> 理念継承型 フランチャイズ本部構築支援</div>
+
+                                <div class="flex items-center gap-3 font-black font-black"><div class="w-2 h-2 rounded-full bg-sky-400"></div> 加盟店募集マーケティング・実働型集客支援</div>
+
+                                <div class="flex items-center gap-3 font-black font-black"><div class="w-2 h-2 rounded-full bg-sky-400"></div> 営業AIツールの導入および現場育成支援</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- お問い合わせ -->
+
+    <footer id="contact" class="bg-slate-50 pt-32 pb-20 text-slate-700 font-black">
+
+        <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-32 mb-20 md:mb-32 items-start font-black">
+
+                <div class="space-y-12 font-black">
+
+                    <div class="space-y-8 font-black font-black font-black">
+
+                        <h4 class="text-4xl md:text-8xl font-black text-sky-950 leading-[1.2] md:leading-[1.05] tracking-tighter text-balance font-black font-black">
+
+                            その成功体験を、<br>永続する組織へ。<br><span class="text-sky-500 underline underline-offset-[8px] md:underline-offset-[16px] font-black">共に。</span>
+
+                        </h4>
+
+                        <p class="text-xl md:text-2xl font-bold leading-loose max-w-lg text-slate-500 font-black font-black">
+
+                            「机上の空論」はいりません。現場に寄り添い、共に収益化を目指すパートナーが必要なら、ぜひお話ししましょう。
+
+                        </p>
+
+                    </div>
+
+                    
+
+                    <div class="flex items-center gap-6 md:gap-8 p-8 md:p-10 bg-white rounded-[32px] md:rounded-[40px] border border-sky-100 shadow-xl shadow-sky-100/50 group text-sky-950 font-black font-black font-black">
+
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-sky-50 text-sky-500 rounded-2xl flex items-center justify-center group-hover:bg-sky-500 group-hover:text-white transition-all font-black font-black">
+
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+
+                        </div>
+
+                        <div class="font-black font-black">
+
+                            <p class="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-widest mb-1 font-black">Mail Address</p>
+
+                            <p class="text-lg md:text-2xl font-black tracking-tighter font-black">honda@orvincia.com</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="bg-white p-8 md:p-24 rounded-[40px] md:rounded-[80px] shadow-4xl shadow-sky-100/50 border border-sky-50 relative font-black">
+
+                    <div class="mb-10 md:mb-16 relative z-10 text-sky-950 font-black font-black font-black">
+
+                        <h5 class="text-3xl md:text-4xl font-black mb-4 tracking-tighter font-black font-black">本部構築・無料相談</h5>
+
+                        <p class="text-slate-500 font-bold text-base md:text-lg leading-relaxed text-sky-900 font-black">「FC展開の可能性」から「売上の悩み」まで、お気軽にご相談ください。</p>
+
+                    </div>
+
+                    <form onsubmit="event.preventDefault();" class="space-y-6 md:space-y-8 relative z-10 font-bold text-slate-800">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-black font-black font-black">
+
+                            <div class="space-y-3 font-black">
+
+                                <label class="text-[10px] md:text-xs font-black text-sky-950 tracking-widest ml-2 uppercase">お名前</label>
+
+                                <input type="text" class="w-full px-6 md:px-8 py-4 md:py-6 bg-sky-50 border-2 border-transparent rounded-2xl md:rounded-[32px] focus:border-sky-500 focus:bg-white outline-none transition-all text-base md:text-lg shadow-inner font-bold" placeholder="山田 太郎">
+
+                            </div>
+
+                            <div class="space-y-3 font-black">
+
+                                <label class="text-[10px] md:text-xs font-black text-sky-950 tracking-widest ml-2 uppercase">貴社名</label>
+
+                                <input type="text" class="w-full px-8 py-4 md:py-6 bg-sky-50 border-2 border-transparent rounded-2xl md:rounded-[32px] focus:border-sky-500 focus:bg-white outline-none transition-all text-base md:text-lg shadow-inner font-bold" placeholder="株式会社〇〇">
+
+                            </div>
+
+                        </div>
+
+                        <div class="space-y-3 font-black font-black">
+
+                            <label class="text-[10px] md:text-xs font-black text-sky-950 tracking-widest ml-2 uppercase">メールアドレス</label>
+
+                            <input type="email" class="w-full px-6 md:px-8 py-4 md:py-6 bg-sky-50 border-2 border-transparent rounded-2xl md:rounded-[32px] focus:border-sky-500 focus:bg-white outline-none transition-all font-bold text-base md:text-lg shadow-inner font-black" placeholder="honda@orvincia.com">
+
+                        </div>
+
+                        <div class="space-y-3 font-black font-black font-black font-black">
+
+                            <label class="text-[10px] md:text-xs font-black text-sky-950 tracking-widest ml-2 uppercase font-black">ご相談内容</label>
+
+                            <textarea rows="5" class="w-full px-6 md:px-8 py-4 md:py-6 bg-sky-50 border-2 border-transparent rounded-2xl md:rounded-[32px] focus:border-sky-500 focus:bg-white outline-none transition-all text-lg shadow-inner resize-none font-bold font-black" placeholder="現状のモデルや、FC化を検討されている背景、売上の課題など"></textarea>
+
+                        </div>
+
+                        <button class="w-full bg-sky-500 text-white py-6 md:py-8 rounded-2xl md:rounded-[32px] font-black text-lg md:text-2xl hover:bg-sky-600 hover:shadow-4xl hover:translate-y-[-4px] transition-all shadow-3xl flex items-center justify-center gap-4 font-black font-black">
+
+                            伴走型パートナーに相談する <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            
+
+            <div class="border-t border-sky-100 pt-16 flex flex-col md:flex-row justify-between items-center gap-10 text-sky-950 font-black uppercase tracking-widest text-[10px] md:text-xs font-black font-black">
+
+                <div class="flex items-center space-x-2 font-black">
+
+                    <span class="text-lg font-black tracking-tight uppercase">株式会社ORVINCIA</span>
+
+                </div>
+
+                <p class="text-slate-400 font-black">©2026 ORVINCIA Co., Ltd. All rights reserved.</p>
+
+                <div class="flex gap-8 md:gap-12 text-slate-500 font-bold font-black">
+
+                    <button onclick="openPrivacyModal()" class="hover:text-sky-600 transition-colors">プライバシーポリシー</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- モーダル用オーバーレイ -->
+
+    <div id="modal-container"></div>
+
+
+
+    <script>
+
+        // 支援内容のデータ
+
+        const services = [
+
+            {
+
+                id: "building",
+
+                title: "理念継承型 本部構築支援",
+
+                icon: `<svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>`,
+
+                desc: "社長の想いを「誰でも再現できるパッケージ」へと昇華させます。ブランドの姿勢を継承しながら、加盟店が迷いなく運営できる本部体制を構築します。",
+
+                tags: ["理念の言語化", "パッケージ化", "伴走構築"],
+
+                details: {
+
+                    problem: "社長のカリスマ性で回っている事業を、そのままFC化しても加盟店は再現できません。理念なき仕組みは、ブランドの崩壊を招きます。",
+
+                    solution: "私たちは『社長の想い』を軸に据え、それを加盟店が実行可能な『FCパッケージ』へと落とし込みます。計画だけで終わらせず、立ち上げまで共に歩みます。",
+
+                    steps: [
+
+                        "理念の言語化・ビジネスモデルの磨き上げ", 
+
+                        "FCパッケージの作成（マニュアル・契約・収支）", 
+
+                        "FC化ロードマップの提供と実働による伴走構築"
+
+                    ]
+
+                }
+
+            },
+
+            {
+
+                id: "marketing",
+
+                title: "戦略的 加盟店獲得マーケ",
+
+                icon: `<svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`,
+
+                desc: "実績のない立ち上げ期に、いかに信頼を勝ち取り、最初の加盟店を募るか。精緻なマーケティング手法を用い、志を共にするパートナーを確実に集客します。",
+
+                tags: ["0→1獲得戦略", "共感型LP制作", "開発代行"],
+
+                featured: true,
+
+                details: {
+
+                    problem: "実績0の新規本部に投資してくれるオーナーは稀です。数あるFC本部の中から『ここなら共に歩みたい』と思われる理由が必要です。",
+
+                    solution: "貴社の『想い』をマーケティングの力で最大化。単なる投資家ではなく、共に事業を創る『同志』を集めます。",
+
+                    steps: [
+
+                        "加盟検討者に刺さる『ストーリー型』LPの制作", 
+
+                        "属性に特化したSNS・Web広告の精密な運用", 
+
+                        "1社目の成功にこだわった営業クロージング支援"
+
+                    ]
+
+                }
+
+            },
+
+            {
+
+                id: "sales",
+
+                title: "売上責任型 営業支援",
+
+                icon: `<svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>`,
+
+                desc: "自社開発AIを活用。アドバイスにとどまらず、加盟店が成約を勝ち取れるまで実力を引き上げ、収益化に責任を持つのが私たちのスタイルです。",
+
+                tags: ["AI解析活用", "成約率の向上", "現場教育"],
+
+                details: {
+
+                    problem: "『マニュアルは渡した。あとは加盟店が頑張るべきだ』という姿勢では、初期本部は必ず行き詰まります。",
+
+                    solution: "私たちは、現場の声をAIで解析・分析することで、加盟店の売上向上までサポートします。加盟店がしっかりと収益を上げられるまで共に汗を流す「実働パートナー」であることを約束します。",
+
+                    steps: [
+
+                        "AIによる現場の声の解析とボトルネック特定", 
+
+                        "商談データに基づいた具体的な改善フィードバック", 
+
+                        "成約率向上という逃げられない数字への共同責任体制"
+
+                    ]
+
+                }
+
+            }
+
+        ];
+
+
+
+        // メニュー開閉
+
+        function toggleMenu() {
+
+            const menu = document.getElementById('mobile-menu');
+
+            const icon = document.getElementById('menu-icon');
+
+            menu.classList.toggle('hidden');
+
+            if (menu.classList.contains('hidden')) {
+
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+
+            } else {
+
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+
+            }
+
+        }
+
+
+
+        // ナビゲーションのスクロールエフェクト
+
+        window.addEventListener('scroll', () => {
+
+            const nav = document.getElementById('navbar');
+
+            if (window.scrollY > 20) {
+
+                nav.classList.add('bg-white/95', 'backdrop-blur-xl', 'border-b', 'border-sky-100', 'shadow-sm');
+
+                nav.classList.remove('py-8');
+
+                nav.classList.add('py-4');
+
+            } else {
+
+                nav.classList.remove('bg-white/95', 'backdrop-blur-xl', 'border-b', 'border-sky-100', 'shadow-sm', 'py-4');
+
+                nav.classList.add('py-8');
+
+            }
+
+        });
+
+
+
+        // サービスのレンダリング
+
+        const grid = document.getElementById('services-grid');
+
+        services.forEach(service => {
+
+            const card = document.createElement('div');
+
+            card.className = `group p-10 md:p-12 rounded-[48px] md:rounded-[60px] border transition-all duration-700 flex flex-col justify-between ${
+
+                service.featured 
+
+                ? 'bg-sky-500 text-white border-transparent shadow-2xl lg:scale-105 xl:scale-110 z-10 font-black' 
+
+                : 'bg-white text-slate-900 border-sky-100 hover:border-sky-300 hover:shadow-2xl font-black'
+
+            }`;
+
+            
+
+            card.innerHTML = `
+
+                <div>
+
+                    <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-3xl flex items-center justify-center mb-8 md:mb-10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 ${
+
+                        service.featured ? 'bg-white/20 text-white font-black' : 'bg-sky-50 text-sky-500 font-black'
+
+                    }">${service.icon}</div>
+
+                    <h3 class="text-2xl md:text-3xl font-black mb-6 tracking-tight font-black font-black">${service.title}</h3>
+
+                    <p class="leading-relaxed mb-10 text-base md:text-lg font-medium font-black ${service.featured ? 'text-sky-50 opacity-95 font-black' : 'text-slate-500 font-black'}">${service.desc}</p>
+
+                </div>
+
+                <div class="space-y-8 font-black">
+
+                    <div class="flex flex-wrap gap-2 md:gap-3 font-black">
+
+                        ${service.tags.map(tag => `<span class="px-4 py-1.5 rounded-full text-[10px] md:text-sm font-black ${service.featured ? 'bg-white/10 text-white' : 'bg-sky-100 text-sky-700'}">#${tag}</span>`).join('')}
+
+                    </div>
+
+                    <button onclick="openModal('${service.id}')" class="w-full py-5 md:py-6 rounded-2xl md:rounded-[24px] font-black text-base md:text-lg transition-all flex items-center justify-center gap-3 ${
+
+                        service.featured ? 'bg-white text-sky-700 hover:bg-sky-50 shadow-lg font-black font-black' : 'bg-sky-700 text-white hover:bg-sky-800 border border-sky-100 font-black font-black'
+
+                    }">支援内容を詳しく見る <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+
+                </div>
+
+            `;
+
+            grid.appendChild(card);
+
+        });
+
+
+
+        // モーダル機能
+
+        function openModal(id) {
+
+            const service = services.find(s => s.id === id);
+
+            if (!service) return;
+
+
+
+            const modalHtml = `
+
+                <div id="modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+
+                    <div class="absolute inset-0 bg-sky-950/60 backdrop-blur-md" onclick="closeModal()"></div>
+
+                    <div class="relative bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] md:rounded-[40px] shadow-2xl modal-enter border border-sky-100">
+
+                        <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 p-2 md:p-3 hover:bg-sky-50 rounded-full transition-colors text-slate-400">
+
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+
+                        </button>
+
+                        <div class="p-6 md:p-16 text-slate-800 font-black">
+
+                            <div class="flex items-center gap-4 mb-8">
+
+                                <div class="w-12 h-12 md:w-16 md:h-16 bg-sky-50 text-sky-500 rounded-xl md:rounded-2xl flex items-center justify-center font-black">
+
+                                    ${service.icon}
+
+                                </div>
+
+                                <h2 class="text-2xl md:text-3xl font-black text-sky-900 tracking-tight">${service.title}</h2>
+
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-8 md:gap-12 font-black">
+
+                                <div class="space-y-6 md:space-y-8 font-black font-black">
+
+                                    <div>
+
+                                        <h3 class="text-[10px] md:text-xs font-black text-red-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+
+                                            解決する課題
+
+                                        </h3>
+
+                                        <p class="text-base md:text-lg font-bold text-slate-700 leading-relaxed italic border-l-4 border-red-100 pl-4 font-black">
+
+                                            ${service.details.problem}
+
+                                        </p>
+
+                                    </div>
+
+                                    <div>
+
+                                        <h3 class="text-[10px] md:text-xs font-black text-sky-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+
+                                            ORVINCIAのアプローチ
+
+                                        </h3>
+
+                                        <p class="text-base md:text-lg font-medium text-slate-600 leading-relaxed font-black font-black">
+
+                                            ${service.details.solution}
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="bg-sky-50/50 p-6 md:p-8 rounded-3xl space-y-6">
+
+                                    <h3 class="text-lg md:text-xl font-black text-sky-900 flex items-center gap-2">
+
+                                        支援ステップ
+
+                                    </h3>
+
+                                    <ul class="space-y-3 md:space-y-4">
+
+                                        ${service.details.steps.map((step, i) => `
+
+                                            <li class="flex items-start gap-3">
+
+                                                <div class="w-5 h-5 md:w-6 md:h-6 rounded-full bg-sky-500 text-white flex items-center justify-center text-[10px] md:text-xs font-black shrink-0 mt-1 font-black">
+
+                                                    ${i + 1}
+
+                                                </div>
+
+                                                <span class="font-bold text-sm md:text-base text-slate-700 leading-snug font-black font-black">${step}</span>
+
+                                            </li>
+
+                                        `).join('')}
+
+                                    </ul>
+
+                                    <div class="pt-6 border-t border-sky-100 font-black font-black">
+
+                                        <button onclick="closeModal(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="w-full bg-sky-950 text-white py-4 md:py-5 rounded-2xl font-black text-base md:text-lg hover:bg-sky-800 transition-all flex items-center justify-center gap-2 shadow-xl shadow-sky-100">
+
+                                            無料相談する
+
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            document.getElementById('modal-container').innerHTML = modalHtml;
+
+            document.body.classList.add('modal-active');
+
+        }
+
+
+
+        // プライバシーポリシーモーダル
+
+        function openPrivacyModal() {
+
+            const content = `
+
+                <div id="modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center p-4 font-black">
+
+                    <div class="absolute inset-0 bg-sky-950/60 backdrop-blur-md" onclick="closeModal()"></div>
+
+                    <div class="relative bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-[32px] md:rounded-[40px] shadow-2xl modal-enter p-8 md:p-16 text-slate-700 font-bold font-black">
+
+                        <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 p-2 md:p-3 hover:bg-sky-50 rounded-full transition-colors text-slate-400 font-black">
+
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+
+                        </button>
+
+                        <h2 class="text-3xl font-black text-sky-900 mb-8 border-b border-sky-50 pb-4">個人情報保護方針</h2>
+
+                        <div class="space-y-6 text-sm md:text-base leading-relaxed font-black">
+
+                            <p>株式会社ORVINCIA（以下「当社」）は、本ウェブサイト上で提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシーを定めます。</p>
+
+                            
+
+                            <h3 class="text-lg font-black text-sky-800 mt-8">1. 個人情報の収集方法</h3>
+
+                            <p>当社は、ユーザーがお問い合わせフォーム等を利用する際に、氏名、会社名、メールアドレス等の個人情報を収集することがあります。</p>
+
+
+
+                            <h3 class="text-lg font-black text-sky-800 mt-8">2. 個人情報を収集・利用する目的</h3>
+
+                            <ul class="list-disc pl-5 space-y-2 font-black">
+
+                                <li>当社サービスの提供・運営のため</li>
+
+                                <li>ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）</li>
+
+                                <li>上記の利用目的に付随する目的</li>
+
+                            </ul>
+
+
+
+                            <h3 class="text-lg font-black text-sky-800 mt-8">3. 個人情報の第三者提供</h3>
+
+                            <p>当社は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。</p>
+
+
+
+                            <h3 class="text-lg font-black text-sky-800 mt-8">4. 個人情報の管理</h3>
+
+                            <p>当社は、個人情報の漏洩、滅失の防止その他個人情報の安全管理のために必要かつ適切な措置を講じます。</p>
+
+
+
+                            <h3 class="text-lg font-black text-sky-800 mt-8 font-black">5. お問い合わせ窓口</h3>
+
+                            <p>本ポリシーに関するお問い合わせは、下記のメールアドレスまでお願いいたします。</p>
+
+                            <p class="bg-sky-50 p-4 rounded-xl text-sky-900 font-black">E-mail: honda@orvincia.com</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            document.getElementById('modal-container').innerHTML = content;
+
+            document.body.classList.add('modal-active');
+
+        }
+
+
+
+        function closeModal() {
+
+            document.getElementById('modal-container').innerHTML = '';
+
+            document.body.classList.remove('modal-active');
+
+        }
+
+
+
+        // キーボード操作
+
+        window.addEventListener('keydown', (e) => {
+
+            if (e.key === 'Escape') closeModal();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
