@@ -1136,81 +1136,97 @@
 
         // プライバシーポリシーモーダル
 
-        function openPrivacyModal() {
+        // プライバシーポリシーを表示する関数
+function openPrivacyModal() {
+    const content = `
+        <div id="modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-sky-950/60 backdrop-blur-md" onclick="closeModal()"></div>
+            <div class="relative bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-[32px] md:rounded-[40px] shadow-2xl modal-enter p-8 md:p-16 text-slate-700">
+                <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 p-2 md:p-3 hover:bg-sky-50 rounded-full transition-colors text-slate-400">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                
+                <h2 class="text-3xl font-black text-sky-900 mb-8 border-b border-sky-50 pb-4">個人情報保護方針（プライバシーポリシー）</h2>
+                
+                <div class="space-y-8 text-sm md:text-base leading-relaxed">
+                    <p>株式会社ORVINCIA（以下「当社」）は、当社の提供するウェブサイトおよびAI分析ツール「VinciaGrowth（ヴィンシア・グロース）」（以下、総称して「本サービス」）において取得する個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。</p>
 
-            const content = `
-
-                <div id="modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center p-4 font-black">
-
-                    <div class="absolute inset-0 bg-sky-950/60 backdrop-blur-md" onclick="closeModal()"></div>
-
-                    <div class="relative bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-[32px] md:rounded-[40px] shadow-2xl modal-enter p-8 md:p-16 text-slate-700 font-bold font-black">
-
-                        <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 p-2 md:p-3 hover:bg-sky-50 rounded-full transition-colors text-slate-400 font-black">
-
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-
-                        </button>
-
-                        <h2 class="text-3xl font-black text-sky-900 mb-8 border-b border-sky-50 pb-4">個人情報保護方針</h2>
-
-                        <div class="space-y-6 text-sm md:text-base leading-relaxed font-black">
-
-                            <p>株式会社ORVINCIA（以下「当社」）は、本ウェブサイト上で提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシーを定めます。</p>
-
-                            
-
-                            <h3 class="text-lg font-black text-sky-800 mt-8">1. 個人情報の収集方法</h3>
-
-                            <p>当社は、ユーザーがお問い合わせフォーム等を利用する際に、氏名、会社名、メールアドレス等の個人情報を収集することがあります。</p>
-
-
-
-                            <h3 class="text-lg font-black text-sky-800 mt-8">2. 個人情報を収集・利用する目的</h3>
-
-                            <ul class="list-disc pl-5 space-y-2 font-black">
-
-                                <li>当社サービスの提供・運営のため</li>
-
-                                <li>ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）</li>
-
-                                <li>上記の利用目的に付随する目的</li>
-
-                            </ul>
-
-
-
-                            <h3 class="text-lg font-black text-sky-800 mt-8">3. 個人情報の第三者提供</h3>
-
-                            <p>当社は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。</p>
-
-
-
-                            <h3 class="text-lg font-black text-sky-800 mt-8">4. 個人情報の管理</h3>
-
-                            <p>当社は、個人情報の漏洩、滅失の防止その他個人情報の安全管理のために必要かつ適切な措置を講じます。</p>
-
-
-
-                            <h3 class="text-lg font-black text-sky-800 mt-8 font-black">5. お問い合わせ窓口</h3>
-
-                            <p>本ポリシーに関するお問い合わせは、下記のメールアドレスまでお願いいたします。</p>
-
-                            <p class="bg-sky-50 p-4 rounded-xl text-sky-900 font-black">E-mail: honda@orvincia.com</p>
-
+                    <section class="space-y-4">
+                        <h3 class="text-xl font-black text-sky-800 flex items-center gap-2">
+                            <span class="w-1.5 h-6 bg-sky-500 rounded-full"></span>
+                            1. 取得する個人情報の種類
+                        </h3>
+                        <p>当社は、本サービスの提供にあたり、以下の情報を取得します。</p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-sky-50 p-6 rounded-2xl">
+                                <p class="font-black text-sky-900 mb-2">1-1. ウェブサイト・お問い合わせ</p>
+                                <p class="text-sm">氏名、貴社名、メールアドレス、お問い合わせ内容等、フォームに入力された情報。</p>
+                            </div>
+                            <div class="bg-sky-50 p-6 rounded-2xl">
+                                <p class="font-black text-sky-900 mb-2">1-2. VinciaGrowth利用データ</p>
+                                <ul class="list-disc pl-5 text-sm space-y-1">
+                                    <li>アカウント情報（氏名、メールアドレス、所属、役職）</li>
+                                    <li>商談録音・録画データ（音声・動画ファイル）</li>
+                                    <li>入力情報（商談メモ、顧客名、商談日時等）</li>
+                                    <li>利用ログ（IPアドレス、操作履歴等）</li>
+                                </ul>
+                            </div>
                         </div>
+                    </section>
 
+                    <section class="space-y-4">
+                        <h3 class="text-xl font-black text-sky-800 flex items-center gap-2">
+                            <span class="w-1.5 h-6 bg-sky-500 rounded-full"></span>
+                            2. 利用目的
+                        </h3>
+                        <p>当社は、取得した個人情報を以下の目的で利用します。</p>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>AI分析ツール「VinciaGrowth」の提供・維持・運営</li>
+                            <li>商談分析結果・フィードバックの生成および提供</li>
+                            <li>お問い合わせ・無料相談への対応および本人確認</li>
+                            <li>本サービスの機能改善・品質向上のための統計的分析（匿名化処理後）</li>
+                            <li>システム障害対応および不正利用の防止</li>
+                        </ul>
+                    </section>
+
+                    <section class="space-y-4 border-2 border-red-100 p-6 rounded-2xl bg-red-50/30">
+                        <h3 class="text-xl font-black text-red-800">3. 商談相手（録音対象の第三者）の同意取得について</h3>
+                        <p class="font-bold">本サービス（VinciaGrowth）を利用して商談を録音・入力する場合、ご利用者は、事前に商談相手（顧客・取引先等の第三者）から録音の同意を取得する義務を負います。</p>
+                        <p class="text-sm">当社は、ご利用者が適切に同意取得を行っていることを前提としてサービスを提供します。同意取得の不備に起因する第三者とのトラブルについて、当社は一切の責任を負いません。</p>
+                    </section>
+
+                    <section class="space-y-4">
+                        <h3 class="text-xl font-black text-sky-800 flex items-center gap-2">
+                            <span class="w-1.5 h-6 bg-sky-500 rounded-full"></span>
+                            4. 保存期間と安全管理措置
+                        </h3>
+                        <p>原則として契約期間中データを保存し、契約終了後は合理的な期間内に削除します。また、個人情報の漏洩・滅失を防止するため、通信の暗号化（SSL/TLS）、アクセス制御、従業員教育等の措置を講じます。</p>
+                    </section>
+
+                    <section class="space-y-4">
+                        <h3 class="text-xl font-black text-sky-800 flex items-center gap-2">
+                            <span class="w-1.5 h-6 bg-sky-500 rounded-full"></span>
+                            5. お問い合わせ窓口
+                        </h3>
+                        <div class="bg-slate-50 p-6 rounded-2xl text-slate-800 space-y-1">
+                            <p class="font-black">株式会社ORVINCIA 個人情報取扱管理者</p>
+                            <p>住所：東京都渋谷区道玄坂1丁目10-8 渋谷道玄坂東急ビル 2F-C</p>
+                            <p>Email：honda@orvincia.com</p>
+                            <p class="text-xs text-slate-500 mt-2">受付時間：平日 09:00〜18:00</p>
+                        </div>
+                    </section>
+
+                    <div class="pt-8 text-xs text-slate-400 border-t border-sky-50">
+                        <p>制定日：2026年4月10日</p>
+                        <p>最終改定日：2026年4月10日（サービス名称変更に伴う改定）</p>
                     </div>
-
                 </div>
-
-            `;
-
-            document.getElementById('modal-container').innerHTML = content;
-
-            document.body.classList.add('modal-active');
-
-        }
+            </div>
+        </div>
+    `;
+    document.getElementById('modal-container').innerHTML = content;
+    document.body.classList.add('modal-active');
+}
 
 
 
