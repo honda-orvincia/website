@@ -1141,80 +1141,109 @@ function openPrivacyModal() {
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
                 
-                <h2 class="text-3xl font-black text-sky-900 mb-8 border-b border-sky-50 pb-4">個人情報保護方針（プライバシーポリシー）</h2>
-                
-                <div class="space-y-8 text-sm md:text-base leading-relaxed">
-                    <p>株式会社ORVINCIA（以下「当社」）は、当社の提供するウェブサイトおよびAI分析ツール「VinciaGrowth（ヴィンシア・グロース）」（以下、総称して「本サービス」）において取得する個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。</p>
+                <div class="space-y-8 text-sm md:text-base leading-relaxed whitespace-pre-wrap">
+<h2 class="text-3xl font-black text-sky-900 border-b border-sky-50 pb-4">プライバシーポリシー</h2>
+本ポリシーの主体：株式会社ORVINCIA（以下「当社」）
+当社は、本ウェブサイトおよびAI分析ツール「VinciaGrowth」（以下、総称して「本サービス」）において取得する個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。
 
-                    <section class="space-y-4">
-                        <h3 class="text-xl font-black text-sky-800 flex items-center gap-2">
-                            <span class="w-1.5 h-6 bg-sky-500 rounded-full"></span>
-                            1. 取得する個人情報の種類
-                        </h3>
-                        <p>当社は、本サービスの提供にあたり、以下の情報を取得します。</p>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-sky-50 p-6 rounded-2xl">
-                                <p class="font-black text-sky-900 mb-2">1-1. ウェブサイト・お問い合わせ</p>
-                                <p class="text-sm">氏名、貴社名、メールアドレス、お問い合わせ内容等、フォームに入力された情報。</p>
-                            </div>
-                            <div class="bg-sky-50 p-6 rounded-2xl">
-                                <p class="font-black text-sky-900 mb-2">1-2. VinciaGrowth利用データ</p>
-                                <ul class="list-disc pl-5 text-sm space-y-1">
-                                    <li>アカウント情報（氏名、メールアドレス、所属、役職）</li>
-                                    <li>商談録音・録画データ（音声・動画ファイル）</li>
-                                    <li>入力情報（商談メモ、顧客名、商談日時等）</li>
-                                    <li>利用ログ（IPアドレス、操作履歴等）</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
+<h3 class="text-xl font-black text-sky-800 mt-8">1. 取得する個人情報の種類</h3>
+当社は、本サービスの提供にあたり、以下の情報を取得します。
 
-                    <section class="space-y-4">
-                        <h3 class="text-xl font-black text-sky-800 flex items-center gap-2">
-                            <span class="w-1.5 h-6 bg-sky-500 rounded-full"></span>
-                            2. 利用目的
-                        </h3>
-                        <p>当社は、取得した個人情報を以下の目的で利用します。</p>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li>AI分析ツール「VinciaGrowth」の提供・維持・運営</li>
-                            <li>商談分析結果・フィードバックの生成および提供</li>
-                            <li>お問い合わせ・無料相談への対応および本人確認</li>
-                            <li>本サービスの機能改善・品質向上のための統計的分析（匿名化処理後）</li>
-                            <li>システム障害対応および不正利用の防止</li>
-                        </ul>
-                    </section>
+<p class="font-black text-sky-950">1-1. お問い合わせおよびご利用者から取得する情報</p>
+<div class="overflow-hidden border border-slate-200 rounded-xl my-4 text-sm">
+    <div class="grid grid-cols-3 bg-slate-50 border-b border-slate-200 font-black p-3">
+        <div>種別</div>
+        <div class="col-span-2">具体的な情報</div>
+    </div>
+    <div class="grid grid-cols-3 border-b border-slate-100 p-3">
+        <div class="font-bold">お問い合わせ情報</div>
+        <div class="col-span-2">氏名、貴社名、メールアドレス、お問い合わせ内容</div>
+    </div>
+    <div class="grid grid-cols-3 border-b border-slate-100 p-3">
+        <div class="font-bold">アカウント情報</div>
+        <div class="col-span-2">氏名、メールアドレス、所属部署、役職</div>
+    </div>
+    <div class="grid grid-cols-3 border-b border-slate-100 p-3">
+        <div class="font-bold">商談録音・録画データ</div>
+        <div class="col-span-2">音声ファイル、動画ファイル（営業担当者および商談相手の声・映像を含む）</div>
+    </div>
+    <div class="grid grid-cols-3 border-b border-slate-100 p-3">
+        <div class="font-bold">入力情報</div>
+        <div class="col-span-2">商談メモ、顧客名、商談日時、その他手動で入力した情報</div>
+    </div>
+    <div class="grid grid-cols-3 p-3">
+        <div class="font-bold">利用ログ</div>
+        <div class="col-span-2">アクセス日時、操作履歴、IPアドレス、端末情報</div>
+    </div>
+</div>
 
-                    <section class="space-y-4 border-2 border-red-100 p-6 rounded-2xl bg-red-50/30">
-                        <h3 class="text-xl font-black text-red-800">3. 商談相手（録音対象の第三者）の同意取得について</h3>
-                        <p class="font-bold">本サービス（VinciaGrowth）を利用して商談を録音・入力する場合、ご利用者は、事前に商談相手（顧客・取引先等の第三者）から録音の同意を取得する義務を負います。</p>
-                        <p class="text-sm">当社は、ご利用者が適切に同意取得を行っていることを前提としてサービスを提供します。同意取得の不備に起因する第三者とのトラブルについて、当社は一切の責任を負いません。</p>
-                    </section>
+<h3 class="text-xl font-black text-sky-800 mt-8">2. 利用目的</h3>
+当社は、取得した個人情報を以下の目的で利用します。
+・本サービスの提供・維持・運営
+・商談分析結果・フィードバックの生成および提供
+・お問い合わせや無料相談への対応および本人確認
+・システム障害の対応・不正利用の防止
+・本サービスの機能改善・品質向上のための分析（個人を特定できない匿名化・統計化処理を経た場合に限る）
+・法令に基づく対応
 
-                    <section class="space-y-4">
-                        <h3 class="text-xl font-black text-sky-800 flex items-center gap-2">
-                            <span class="w-1.5 h-6 bg-sky-500 rounded-full"></span>
-                            4. 保存期間と安全管理措置
-                        </h3>
-                        <p>原則として契約期間中データを保存し、契約終了後は合理的な期間内に削除します。また、個人情報の漏洩・滅失を防止するため、通信の暗号化（SSL/TLS）、アクセス制御、従業員教育等の措置を講じます。</p>
-                    </section>
+<h3 class="text-xl font-black text-sky-800 mt-8">3. 商談相手（録音対象の第三者）の個人情報について</h3>
+本サービスでは、ご利用者が録音する商談音声に、商談相手（顧客や取引先等の第三者）の声・氏名・個人情報が含まれる場合があります。
+ご利用者の責任： ご利用者は、商談を録音・本サービスに入力する前に、商談相手から録音の同意を取得する責任を負います。当社は、ご利用者が同意取得を適切に行っていることを前提として本サービスを提供します。当社は、ご利用者による同意取得の不備に起インするトラブルについて責任を負いません。
 
-                    <section class="space-y-4">
-                        <h3 class="text-xl font-black text-sky-800 flex items-center gap-2">
-                            <span class="w-1.5 h-6 bg-sky-500 rounded-full"></span>
-                            5. お問い合わせ窓口
-                        </h3>
-                        <div class="bg-slate-50 p-6 rounded-2xl text-slate-800 space-y-1">
-                            <p class="font-black">株式会社ORVINCIA 個人情報取扱管理者</p>
-                            <p>住所：東京都渋谷区道玄坂1丁目10-8 渋谷道玄坂東急ビル 2F-C</p>
-                            <p>Email：honda@orvincia.com</p>
-                            <p class="text-xs text-slate-500 mt-2">受付時間：平日 09:00〜18:00</p>
-                        </div>
-                    </section>
+<h3 class="text-xl font-black text-sky-800 mt-8">4. 第三者提供</h3>
+当社は、以下の場合を除き、個人情報を第三者に提供しません。
+・ご本人の同意がある場合
+・法令に基づき開示が必要な場合（裁判所・行政機関からの要請等）
 
-                    <div class="pt-8 text-xs text-slate-400 border-t border-sky-50">
-                        <p>制定日：2026年4月10日</p>
-                        <p>最終改定日：2026年4月10日（サービス名称変更に伴う改定）</p>
-                    </div>
+<h3 class="text-xl font-black text-sky-800 mt-8">5. 保存期間・データの削除</h3>
+<div class="overflow-hidden border border-slate-200 rounded-xl my-4 text-sm">
+    <div class="grid grid-cols-2 bg-slate-50 border-b border-slate-200 font-black p-3">
+        <div>データの種類</div>
+        <div>保存期間</div>
+    </div>
+    <div class="grid grid-cols-2 border-b border-slate-100 p-3">
+        <div>お問い合わせ情報</div>
+        <div>対応完了から合理的な期間</div>
+    </div>
+    <div class="grid grid-cols-2 border-b border-slate-100 p-3">
+        <div>アカウント情報・データ</div>
+        <div>契約期間中</div>
+    </div>
+    <div class="grid grid-cols-2 p-3">
+        <div>利用ログ</div>
+        <div>契約期間中</div>
+    </div>
+</div>
+ご契約終了後、ご利用者からの削除請求に基づき、技術的に実施可能な範囲で個人情報を削除します。
+
+<h3 class="text-xl font-black text-sky-800 mt-8">6. 安全管理措置</h3>
+当社は、個人情報の漏洩・滅失・毀損の防止のため、以下の安全管理措置を講じます。
+・通信の暗号化（HTTPS/TLS）
+・アクセス制御・権限管理
+・不正アクセス検知・ログ監視
+・従業員への個人情報保護教育
+
+<h3 class="text-xl font-black text-sky-800 mt-8">7. ご本人の権利（開示・訂正・削除）</h3>
+ご利用者は、ご自身の個人情報について、以下の請求を行うことができます。
+・利用目的の通知・開示
+・内容の訂正・追加・削除
+・利用の停止・消去
+・第三者提供の停止
+請求については、下記お問い合わせ先までご連絡ください。本人確認を行った上で、合理的な期間内に対応します。
+
+<h3 class="text-xl font-black text-sky-800 mt-8">8. プライバシーポリシーの変更</h3>
+当社は、法令の改正・サービス内容の変更等に伴い、本ポリシーを変更することがあります。重要な変更を行う場合は、本サービス上またはメールにて事前にお知らせします。変更後のポリシーは、当社所定の方法で公表した時点から効力を生じます。
+
+<h3 class="text-xl font-black text-sky-800 mt-8">9. お問い合わせ</h3>
+個人情報の取扱いに関するお問い合わせは、以下の窓口までご連絡ください。
+
+個人情報取扱管理者：株式会社ORVINCIA
+住所：〒1500043　東京都渋谷区道玄坂１丁目１０番８号渋谷道玄坂東急ビル２Ｆ－Ｃ
+Email：honda@orvincia.com
+受付時間：平日10:00〜18:00
+
+制定日：2026 年 4 月 10 日
+最終改定日：2026 年 4 月 10 日
                 </div>
             </div>
         </div>
