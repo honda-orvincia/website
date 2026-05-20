@@ -496,6 +496,21 @@
             onScrollHeader();
         })();
 
+        /* Ensure fv-heading responsive size (force override when CSS is overridden) */
+        (function() {
+            const setHeading = () => {
+                const h = document.querySelector('.fv-heading');
+                if (!h) return;
+                if (window.innerWidth >= 768) {
+                    h.style.fontSize = '5.2rem';
+                } else {
+                    h.style.fontSize = '3rem';
+                }
+            };
+            window.addEventListener('resize', setHeading);
+            setHeading();
+        })();
+
         const fadeElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
