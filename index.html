@@ -502,17 +502,17 @@
             const setHeading = () => {
                 const h = document.querySelector('.fv-heading');
                 if (!h) return;
-                const hero = document.getElementById('hero');
-                const heroWidth = hero ? hero.clientWidth : window.innerWidth;
-                if (heroWidth >= 768) {
+                const sw = window.screen && window.screen.width ? window.screen.width : window.innerWidth;
+                if (sw >= 1280) {
                     h.style.setProperty('font-size', '6rem', 'important');
+                } else if (sw >= 768) {
+                    h.style.setProperty('font-size', '5.2rem', 'important');
                 } else {
                     h.style.setProperty('font-size', '3rem', 'important');
                 }
             };
             window.addEventListener('resize', setHeading);
             window.addEventListener('orientationchange', setHeading);
-            // A small delay to re-run after other scripts/layout adjustments
             setTimeout(setHeading, 120);
             setHeading();
         })();
