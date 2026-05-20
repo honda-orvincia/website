@@ -16,6 +16,101 @@
             }
         </style>
     <meta charset="UTF-8">
+            /* Services carousel: typographic cards */
+            .services-carousel {
+                position: relative;
+                overflow: hidden;
+                padding: 40px 0;
+            }
+            .carousel-track {
+                display: flex;
+                gap: 28px;
+                align-items: stretch;
+                will-change: transform;
+                animation: carousel-scroll 30s linear infinite;
+            }
+            .carousel-slide {
+                flex: 0 0 auto;
+                width: 380px;
+                height: 480px;
+                border-radius: 32px;
+                position: relative;
+                display: flex;
+                align-items: flex-end;
+                padding: 28px;
+                box-sizing: border-box;
+            }
+            .carousel-slide .card-number {
+                position: absolute;
+                left: 24px;
+                top: 16px;
+                font-size: 5rem;
+                font-weight: 900;
+                opacity: 0.15;
+                line-height: 1;
+            }
+            .carousel-slide .card-title {
+                font-size: 2rem;
+                font-weight: 900;
+                margin: 0 0 8px 0;
+            }
+            .carousel-slide .card-desc {
+                margin: 0 0 18px 0;
+                font-size: 1rem;
+                line-height: 1.6;
+                max-width: 300px;
+            }
+            .carousel-slide .card-cta {
+                position: absolute;
+                right: 20px;
+                bottom: 20px;
+                width: 56px;
+                height: 56px;
+                border-radius: 999px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.25rem;
+                font-weight: 700;
+                cursor: pointer;
+                border: none;
+            }
+
+            /* color variants */
+            .card-1 { background: #0f172a; color: #ffffff; }
+            .card-2 { background: #2563eb; color: #ffffff; }
+            .card-3 { background: #ffffff; color: #0f172a; border: 1px solid #e2e8f0; }
+            .card-4 { background: #eff6ff; color: #0f172a; }
+
+            /* CTA styles per card */
+            .card-1 .card-cta { background: #ffffff; color: #0f172a; }
+            .card-2 .card-cta { background: #ffffff; color: #2563eb; }
+            .card-3 .card-cta { background: #2563eb; color: #ffffff; }
+            .card-4 .card-cta { background: #2563eb; color: #ffffff; }
+
+            /* pause on hover */
+            .services-carousel:hover .carousel-track { animation-play-state: paused; }
+
+            @keyframes carousel-scroll {
+                from { transform: translateX(0); }
+                to { transform: translateX(-50%); }
+            }
+
+            /* gradient fades */
+            .carousel-fade-left, .carousel-fade-right {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 140px;
+                pointer-events: none;
+                z-index: 20;
+            }
+            .carousel-fade-left { left: 0; background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0)); }
+            .carousel-fade-right { right: 0; background: linear-gradient(270deg, rgba(255,255,255,1), rgba(255,255,255,0)); }
+            /* dark page: make fades translucent over dark bg */
+            @media (prefers-color-scheme: dark) {
+                .carousel-fade-left, .carousel-fade-right { background: linear-gradient(90deg, #0a0a0a, rgba(10,10,10,0)); }
+            }
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>株式会社ORVINCIA | フランチャイズ本部支援</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -194,7 +289,12 @@
                     <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight">「理念」を「パッケージ」へ。</h2>
                     <p class="mt-6 max-w-2xl text-lg text-slate-600">強固なパッケージと自走する営業組織、2つの軸でFC展開を成功へと導きます。</p>
                 </div>
-                <div id="services-grid" class="grid gap-8 lg:grid-cols-3">
+                <div id="services-carousel" class="services-carousel">
+                    <div class="carousel-track" id="carousel-track" aria-hidden="false">
+                        <!-- slides injected by JS -->
+                    </div>
+                    <div class="carousel-fade-left"></div>
+                    <div class="carousel-fade-right"></div>
                 </div>
             </div>
         </section>
@@ -350,27 +450,29 @@
             }
         ];
 
-        const grid = document.getElementById('services-grid');
-        services.forEach(service => {
-            const card = document.createElement('div');
-            card.className = 'card-panel p-8 flex flex-col justify-between';
-            card.innerHTML = `
-                <div>
-                    <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-700 mb-6">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+        // Build typographic carousel slides from services array
+        const carouselTrack = document.getElementById('carousel-track');
+        const slideItems = services.map((service, idx) => {
+            const num = String(idx + 1).padStart(2, '0');
+            const cardClass = `card-${(idx % 4) + 1}`;
+            return `
+                <div class="carousel-slide ${cardClass}" role="group" aria-label="service ${num}">
+                    <div class="card-number">${num}</div>
+                    <div>
+                        <h3 class="card-title">${service.title}</h3>
+                        <p class="card-desc">${service.desc}</p>
                     </div>
-                    <h3 class="text-2xl font-semibold text-slate-950 mb-4">${service.title}</h3>
-                    <p class="text-slate-600 leading-7 mb-6">${service.desc}</p>
-                </div>
-                <div>
-                    <div class="flex flex-wrap gap-2 mb-6">
-                        ${service.tags.map(tag => `<span class="rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">#${tag}</span>`).join('')}
-                    </div>
-                    <button onclick="openModal('${service.id}')" class="button-primary w-full rounded-full px-5 py-4 text-sm font-semibold">支援内容を詳しく見る</button>
+                    <button class="card-cta" aria-label="詳しく見る" onclick="openModal('${service.id}')">→</button>
                 </div>
             `;
-            grid.appendChild(card);
-        });
+        }).join('');
+
+        // Duplicate slides for seamless loop
+        carouselTrack.innerHTML = slideItems + slideItems;
+
+        // Pause animation when user interacts via keyboard focus on track
+        carouselTrack.addEventListener('focusin', () => carouselTrack.style.animationPlayState = 'paused');
+        carouselTrack.addEventListener('focusout', () => carouselTrack.style.animationPlayState = 'running');
 
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
