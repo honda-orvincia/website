@@ -179,19 +179,17 @@
                 <div class="w-full lg:w-2/3">
                     <p class="text-sm uppercase tracking-[0.25em] text-slate-500 mb-8">フランチャイズ本部支援の実働パートナー</p>
                     <h1 class="hero-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-950 leading-[1.02] max-w-3xl mb-8">加盟店の売上まで<br class="hidden md:block">責任を持つ、<br>洗練されたFC本部支援</h1>
-                    <p class="max-w-2xl text-lg md:text-xl leading-8 text-slate-600 mb-12">理念を言語化し、再現性の高いパッケージとAI解析による営業支援で、加盟店の収益化まで一貫して伴走します。</p>
+                    <p class="max-w-2xl text-lg md:text-xl leading-8 text-slate-600 mb-12">理念を言語化し、再現性の高いパッケージで加盟店の収益化まで一貫して伴走します。</p>
                     <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
                         <button onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })" class="button-primary rounded-full px-8 py-4 text-base font-semibold">支援内容を見る</button>
                         <button onclick="document.getElementById('mission').scrollIntoView({ behavior: 'smooth' })" class="rounded-full border border-slate-200 px-8 py-4 text-base font-semibold text-slate-900 hover:border-blue-600 transition">私たちのこだわり</button>
                     </div>
-                    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl">
+                    <div class="mt-16 max-w-3xl">
                         <div class="card-panel p-8">
-                            <span class="text-5xl font-extrabold count-number" data-target="70">0</span>
-                            <p class="mt-4 text-sm uppercase tracking-[0.3em] text-slate-500">支援実績</p>
-                        </div>
-                        <div class="card-panel p-8">
-                            <span class="text-5xl font-extrabold count-number" data-target="6.3">0</span>
-                            <p class="mt-4 text-sm uppercase tracking-[0.3em] text-slate-500">最高年間実績(億円)</p>
+                            <p class="text-sm uppercase tracking-[0.3em] text-slate-500 mb-4">支援先の一部</p>
+                            <ul class="space-y-3 text-slate-700">
+                                <li>ドライヘッドスパ専門店アリエス</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -213,7 +211,7 @@
                         <div class="text-sm uppercase tracking-[0.25em] text-blue-600 mb-4">Representative Director</div>
                         <h3 class="text-3xl font-bold text-slate-950 mb-4">本多 亮也</h3>
                         <p class="text-slate-600 leading-8">教育ベンチャーにてFC立ち上げ・全22店舗展開を完遂。現場視点と戦略視点を兼ね備えた本部構築支援を提供します。</p>
-                        <div class="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-500">"私たちは現場の声をAIで解析し、加盟店の売上向上まで支援します。単なるアドバイザーではなく、加盟店が収益を上げるまで共に汗を流す実働パートナーであることを約束します。"</div>
+                        <div class="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-500">"私たちは現場で起きている課題をしっかり受け止め、加盟店が収益を上げるまで共に汗を流す実働パートナーであることを約束します."</div>
                     </div>
                 </div>
             </div>
@@ -285,8 +283,8 @@
                         <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-6">
                             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-semibold text-slate-950 mb-4">自社開発AI解析・改善支援</h3>
-                        <p class="text-slate-600 leading-8">現場の声をデータで可視化し、加盟店の営業力を社長クラスにまで引き上げます。収益化にコミットする実働支援を実現します。</p>
+                        <h3 class="text-2xl font-semibold text-slate-950 mb-4">現場課題の解決支援</h3>
+                        <p class="text-slate-600 leading-8">加盟店の日常的な課題を丁寧に洗い出し、現場の改善と運営の安定化に向けた具体的な支援を続けます。</p>
                     </div>
                 </div>
             </div>
@@ -316,7 +314,7 @@
                             <ul class="space-y-3 text-slate-600">
                                 <li>理念継承型 フランチャイズ本部構築支援</li>
                                 <li>加盟店募集マーケティング・実働型集客支援</li>
-                                <li>営業AIツールの導入および現場育成支援</li>
+                                <li>管理ツールの開発による運営効率化支援</li>
                             </ul>
                         </div>
                     </div>
@@ -386,35 +384,46 @@
         const services = [
             {
                 id: 'building',
-                title: '理念継承型 本部構築支援',
-                desc: '社長の想いを再現可能なFCパッケージへと昇華し、加盟店が迷わず運営できる本部体制を構築します。',
-                tags: ['理念の言語化', 'パッケージ化', '伴走構築'],
+                title: 'FC本部構築',
+                desc: 'FC展開に必要な要素を整理し、マニュアル・契約書・研修体制などの作成まで一括対応します。',
+                tags: ['FC構築', 'マニュアル作成', '研修体制'],
                 details: {
-                    problem: '社長のカリスマ性で回っている事業をそのままFC化しても、加盟店は再現できません。理念なき仕組みはブランドの崩壊を招きます。',
-                    solution: '想いを軸に据え、加盟店が実行可能なFCパッケージへ落とし込みます。計画だけでなく、立ち上げまで共に歩みます。',
-                    steps: ['理念の言語化・ビジネスモデルの磨き上げ', 'FCパッケージの作成（マニュアル・契約・収支）', 'FC化ロードマップの提供と実働による伴走構築']
+                    problem: 'FC展開の準備が整っていなければ、加盟店が安定して立ち上がることはできません。',
+                    solution: '社長に代わり、初期から本部立ち上げまでを仕切るFC本部のプロデューサーとして支援します。',
+                    steps: ['FC展開に必要な要素の整理・提示', 'マニュアル・契約書・研修体制の一括作成', '本部立ち上げの設計と実行サポート']
                 }
             },
             {
-                id: 'marketing',
-                title: '戦略的 加盟店獲得マーケ',
-                desc: '実績のない立ち上げ期でも、共に歩むオーナーを集めるためのストーリー型マーケティングと精緻な運用を提供します。',
-                tags: ['0→1獲得戦略', '共感型LP制作', '開発代行'],
+                id: 'advertising',
+                title: '加盟店募集の広告運用',
+                desc: 'Web広告・LP制作・説明会集客などで、加盟希望者を集めるための実働支援を行います。',
+                tags: ['Web広告', 'LP制作', '説明会集客'],
                 details: {
-                    problem: '実績0の新規本部に投資してくれるオーナーは稀です。魅力を伝える理由が必要です。',
-                    solution: '想いをマーケティングの力で最大化し、共に事業を創る同志を集めます。',
-                    steps: ['加盟検討者に刺さる「ストーリー型」LPの制作', '属性に特化したSNS・Web広告の精密な運用', '1社目の成功にこだわった営業クロージング支援']
+                    problem: '加盟希望者を効率的に集める仕組みがないと、採用が停滞します。',
+                    solution: 'ターゲットに届く広告と説明会の集客設計で、加盟希望者の獲得を後押しします。',
+                    steps: ['加盟希望者向けLPの制作', 'Web広告の運用と最適化', '説明会や個別相談会の集客支援']
                 }
             },
             {
-                id: 'sales',
-                title: '売上責任型 営業支援',
-                desc: '自社開発AIで現場データを解析し、加盟店の営業力を社長クラスにまで引き上げます。収益化まで責任を持って支援します。',
-                tags: ['AI解析活用', '成約率の向上', '現場教育'],
+                id: 'operations',
+                title: 'FC運営の業務支援',
+                desc: '加盟店への日常的なサポートや現場課題の解決を通じて、開業後も並走します。',
+                tags: ['現場サポート', '課題解決', '運営支援'],
                 details: {
-                    problem: '「マニュアルを渡したら終わり」では初期本部は必ず行き詰まります。',
-                    solution: '現場の声をAIで解析・分析し、加盟店の売上向上までサポートします。',
-                    steps: ['AIによる現場の声の解析とボトルネック特定', '商談データに基づいた具体的な改善フィードバック', '成約率向上を目指す共同責任体制']
+                    problem: '開業後の課題が放置されると、加盟店の定着や収益化が進みません。',
+                    solution: '日常的なサポートと現場課題の解決を通じて、加盟店運営の安定化を目指します。',
+                    steps: ['加盟店の現場課題の把握', '改善策の提案と実行支援', '運営体制の定着まで継続的に伴走']
+                }
+            },
+            {
+                id: 'tools',
+                title: '管理ツールの開発',
+                desc: 'FC運営を効率化する管理ツールを自社開発し、業務の見える化と手間削減を実現します。',
+                tags: ['運営効率化', 'ツール開発', '見える化'],
+                details: {
+                    problem: '管理工数がかさみ、運営の質が維持できないことがあります。',
+                    solution: 'FC運営を効率化する専用ツールの開発で、業務をシンプルにします。',
+                    steps: ['運営課題のヒアリング', '要件設計とツール開発', '運用導入とサポート']
                 }
             }
         ];
@@ -498,7 +507,7 @@
                         </button>
                         <div class="space-y-6 text-slate-700 text-sm leading-7">
                             <h2 class="text-3xl font-semibold text-slate-950">プライバシーポリシー</h2>
-                            <p>本ポリシーの主体：株式会社ORVINCIA（以下「当社」）当社は、本ウェブサイトおよびAI分析ツール「VinciaGrowth」（以下、総称して「本サービス」）において取得する個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下「本ポリシー」）を定めます。</p>
+                            <p>本ポリシーの主体：株式会社ORVINCIA（以下「当社」）当社は、本ウェブサイト「本ポリシー」）を定めます。</p>
                             <h3 class="text-xl font-semibold text-slate-950">1. 取得する個人情報の種類</h3>
                             <p>当社は、本サービスの提供にあたり、以下の情報を取得します。</p>
                             <p class="font-semibold text-slate-950">1-1. お問い合わせおよびご利用者から取得する情報</p>
@@ -571,26 +580,7 @@
         }, { threshold: 0.2 });
         fadeElements.forEach(el => observer.observe(el));
 
-        const countElements = document.querySelectorAll('.count-number');
-        const countObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                const el = entry.target;
-                const target = parseFloat(el.dataset.target);
-                const duration = 1500;
-                const start = performance.now();
-                const decimals = target % 1 !== 0 ? 1 : 0;
-                const step = (timestamp) => {
-                    const progress = Math.min((timestamp - start) / duration, 1);
-                    const value = target * progress;
-                    el.textContent = decimals ? value.toFixed(1) : Math.round(value);
-                    if (progress < 1) requestAnimationFrame(step);
-                };
-                requestAnimationFrame(step);
-                obs.unobserve(el);
-            });
-        }, { threshold: 0.5 });
-        countElements.forEach(el => countObserver.observe(el));
+
     </script>
 </body>
 
