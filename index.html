@@ -3,6 +3,18 @@
 
 <head>
     <!-- rebuild: 2026-05-20T16:56:00Z -->
+        <style>
+            /* 強制：FV見出しのサイズ（JSでの上書きや他スタイルより優先） */
+            @media (min-width: 1280px) {
+                .fv-heading { font-size: 6rem !important; }
+            }
+            @media (min-width: 768px) and (max-width: 1279px) {
+                .fv-heading { font-size: 5.2rem !important; }
+            }
+            @media (max-width: 767px) {
+                .fv-heading { font-size: 3rem !important; }
+            }
+        </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>株式会社ORVINCIA | フランチャイズ本部支援</title>
