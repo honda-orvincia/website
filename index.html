@@ -502,12 +502,14 @@
             const setHeading = () => {
                 const h = document.querySelector('.fv-heading');
                 if (!h) return;
-                if (window.innerWidth >= 768) {
-                    h.style.fontSize = '5.2rem';
+                if (window.matchMedia('(min-width: 768px)').matches) {
+                    h.style.setProperty('font-size', '5.2rem', 'important');
                 } else {
-                    h.style.fontSize = '3rem';
+                    h.style.setProperty('font-size', '3rem', 'important');
                 }
             };
+            const mq = window.matchMedia('(min-width: 768px)');
+            mq.addEventListener?.('change', setHeading);
             window.addEventListener('resize', setHeading);
             setHeading();
         })();
