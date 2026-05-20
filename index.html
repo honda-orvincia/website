@@ -502,15 +502,18 @@
             const setHeading = () => {
                 const h = document.querySelector('.fv-heading');
                 if (!h) return;
-                if (window.matchMedia('(min-width: 768px)').matches) {
-                    h.style.setProperty('font-size', '5.2rem', 'important');
+                const hero = document.getElementById('hero');
+                const heroWidth = hero ? hero.clientWidth : window.innerWidth;
+                if (heroWidth >= 768) {
+                    h.style.setProperty('font-size', '6rem', 'important');
                 } else {
                     h.style.setProperty('font-size', '3rem', 'important');
                 }
             };
-            const mq = window.matchMedia('(min-width: 768px)');
-            mq.addEventListener?.('change', setHeading);
             window.addEventListener('resize', setHeading);
+            window.addEventListener('orientationchange', setHeading);
+            // A small delay to re-run after other scripts/layout adjustments
+            setTimeout(setHeading, 120);
             setHeading();
         })();
 
