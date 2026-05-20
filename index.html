@@ -11,175 +11,164 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            color-scheme: light;
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
-            color: #0f172a;
-            background: #ffffff;
         }
 
         body {
             margin: 0;
             min-height: 100vh;
-            background: #ffffff;
             color: #0f172a;
             overflow-x: hidden;
             scroll-behavior: smooth;
-        }
-
-        .section-bg-alt {
-            background: #f8fafc;
-        }
-
-        .section-title {
-            border-left: 4px solid #2563eb;
-            padding-left: 1rem;
-        }
-
-        .card-panel {
             background: #ffffff;
-            border: 1px solid rgba(37, 99, 235, 0.12);
-            box-shadow: 0 22px 60px rgba(15, 23, 42, 0.05);
-            border-radius: 32px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .card-panel:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 32px 80px rgba(15, 23, 42, 0.12);
-        }
-
-        .input-field {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            padding: 1rem 1.25rem;
-            transition: border-color 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
-        }
-
-        .button-primary {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: #ffffff;
-            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.18);
-        }
-
-        .button-primary:hover {
-            transform: translateY(-1px);
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .blur-circle {
-            position: absolute;
-            bottom: -80px;
-            left: -80px;
-            width: 420px;
-            height: 420px;
-            background: rgba(37, 99, 235, 0.14);
-            filter: blur(96px);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .nav-link {
+        /* --- First View (FV) --- */
+        .fv-hero {
             position: relative;
-            color: #334155;
+            min-height: 100vh;
+            overflow: hidden;
+            background-color: #0a0a0a;
         }
 
-        .nav-link::after {
-            content: '';
+        .fv-bg {
             position: absolute;
-            left: 0;
-            bottom: -3px;
-            width: 0;
-            height: 2px;
-            background: #2563eb;
-            transition: width 0.25s ease;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.22; /* 薄く重ねる */
+            z-index: 0;
+            transform: scale(1.02);
         }
 
-        .nav-link:hover::after {
-            width: 100%;
+        .fv-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.7); /* black 70% */
+            z-index: 1;
         }
 
-        .hero-heading {
-            letter-spacing: -0.05em;
-            line-height: 1.05;
+        .fv-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
         }
 
-        .count-number {
-            font-variant-numeric: tabular-nums;
+        .fv-heading {
+            color: #ffffff;
+            font-weight: 800;
+            line-height: 1.02;
+            font-size: 3rem; /* mobile */
+            max-width: 64rem;
+            margin-bottom: 1.25rem;
         }
 
-        .section-heading {
-            max-width: 720px;
+        .fv-sub {
+            color: rgba(255,255,255,0.9);
+            max-width: 56rem;
+            font-size: 1rem;
+            margin-bottom: 2rem;
         }
 
-        .is-sticky {
-            position: sticky;
-            top: 0;
-            z-index: 50;
+        @media (min-width: 768px) {
+            .fv-heading { font-size: 5.2rem; }
+            .fv-sub { font-size: 1.125rem; }
+            .fv-content { padding-top: 8rem; padding-bottom: 8rem; }
         }
 
-        .header-border {
-            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        /* Buttons for FV */
+        .btn-white {
             background: #ffffff;
+            color: #000000;
+            border-radius: 9999px;
+            padding: 1rem 1.6rem;
+            font-weight: 700;
+            border: none;
         }
+
+        .btn-outline-white {
+            background: transparent;
+            color: #ffffff;
+            border-radius: 9999px;
+            padding: 0.9rem 1.6rem;
+            font-weight: 700;
+            border: 2px solid rgba(255,255,255,0.95);
+        }
+
+        /* Keep existing components usable */
+        .section-bg-alt { background: #f8fafc; }
+        .card-panel { background: #ffffff; border: 1px solid rgba(37, 99, 235, 0.12); box-shadow: 0 22px 60px rgba(15, 23, 42, 0.05); border-radius: 32px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-panel:hover { transform: translateY(-6px); box-shadow: 0 32px 80px rgba(15, 23, 42, 0.12); }
+        .input-field { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 1rem 1.25rem; transition: border-color 0.25s ease, box-shadow 0.25s ease; }
+        .input-field:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12); }
+
+        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        .blur-circle { position: absolute; bottom: -80px; left: -80px; width: 420px; height: 420px; background: rgba(37, 99, 235, 0.14); filter: blur(96px); border-radius: 50%; pointer-events: none; z-index: 0; }
+
+        .count-number { font-variant-numeric: tabular-nums; }
+        .section-heading { max-width: 720px; }
+
+        .is-sticky { position: sticky; top: 0; z-index: 60; }
+
+        /* Header: transparent initially, becomes black on scroll */
+        .header-transparent { background: transparent; color: #ffffff; border-bottom: none; transition: background-color 0.25s ease, box-shadow 0.25s ease; }
+        .header-scrolled { background: #000000; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
+
+        .nav-link { position: relative; color: rgba(255,255,255,0.95); }
+        .nav-link::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 2px; background: rgba(255,255,255,0.9); transition: width 0.25s ease; }
+        .nav-link:hover::after { width: 100%; }
     </style>
 </head>
 
 <body>
-    <header class="is-sticky header-border backdrop-blur-sm">
+    <header id="site-header" class="is-sticky header-transparent">
         <div class="max-w-[1280px] mx-auto px-6 py-4 flex items-center justify-between gap-6">
-            <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="text-base font-semibold text-slate-950">株式会社ORVINCIA</button>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-                <a href="#services" class="nav-link">支援内容</a>
-                <a href="#about" class="nav-link">代表について</a>
-                <a href="#company" class="nav-link">会社概要</a>
+            <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="text-base font-semibold text-white">株式会社ORVINCIA</button>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#mission" class="nav-link">想い・理念</a>
+                    <a href="#services" class="nav-link">支援内容</a>
+                    <a href="#strengths" class="nav-link">弊社の強み</a>
+                    <a href="#company" class="nav-link">会社概要</a>
             </nav>
             <div class="flex items-center gap-4">
-                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="button-primary rounded-full px-6 py-3 text-sm font-semibold">無料相談</button>
-                <button id="mobile-menu-button" class="md:hidden p-2 text-slate-700" onclick="toggleMenu()" aria-label="メニュー">
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="btn-white rounded-full text-sm font-semibold">無料相談</button>
+                <button id="mobile-menu-button" class="md:hidden p-2 text-white" onclick="toggleMenu()" aria-label="メニュー">
                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200 bg-white">
-            <div class="px-6 py-6 space-y-4">
-                <a href="#services" onclick="toggleMenu()" class="block text-base font-medium text-slate-700">支援内容</a>
-                <a href="#about" onclick="toggleMenu()" class="block text-base font-medium text-slate-700">代表について</a>
-                <a href="#company" onclick="toggleMenu()" class="block text-base font-medium text-slate-700">会社概要</a>
-                <button onclick="toggleMenu(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="button-primary w-full rounded-full px-6 py-3 font-semibold">無料相談</button>
+            <div id="mobile-menu" class="md:hidden hidden border-t border-slate-800 bg-black/90 text-white">
+                <div class="px-6 py-6 space-y-4">
+                    <a href="#mission" onclick="toggleMenu()" class="block text-base font-medium text-white">想い・理念</a>
+                    <a href="#services" onclick="toggleMenu()" class="block text-base font-medium text-white">支援内容</a>
+                    <a href="#strengths" onclick="toggleMenu()" class="block text-base font-medium text-white">弊社の強み</a>
+                    <a href="#company" onclick="toggleMenu()" class="block text-base font-medium text-white">会社概要</a>
+                    <button onclick="toggleMenu(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="btn-white w-full rounded-full px-6 py-3 font-semibold">無料相談</button>
+                </div>
             </div>
-        </div>
     </header>
 
     <main>
-        <section class="relative min-h-[100vh] overflow-hidden">
-            <div class="blur-circle"></div>
-            <div class="max-w-[1280px] mx-auto px-6 py-20 md:py-28 lg:py-32 relative z-10 flex min-h-[calc(100vh-96px)] items-center">
-                <div class="w-full lg:w-2/3">
-                    <p class="text-sm uppercase tracking-[0.25em] text-slate-500 mb-8">フランチャイズ本部支援の実働パートナー</p>
-                    <h1 class="hero-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-950 leading-[1.02] max-w-3xl mb-8">フランチャイズ本部の構築から運営まで、<br class="hidden md:block">一括支援します。</h1>
-                    <p class="max-w-2xl text-lg md:text-xl leading-8 text-slate-600 mb-12">FC展開に必要な準備の整理から、本部構築・加盟店募集・運営支援・管理ツール開発まで対応します。</p>
-                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
-                        <button onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })" class="button-primary rounded-full px-8 py-4 text-base font-semibold">支援内容を見る</button>
+        <section id="hero" class="fv-hero">
+            <div class="fv-bg" aria-hidden="true"></div>
+            <div class="fv-overlay" aria-hidden="true"></div>
+            <div class="fv-content">
+                <div class="max-w-[1280px] mx-auto px-6 relative z-10 flex min-h-[calc(100vh-96px)] items-center">
+                    <div class="w-full lg:w-2/3">
+                        <p class="text-sm uppercase tracking-[0.25em] text-white/80 mb-8">フランチャイズ本部支援の実働パートナー</p>
+                        <h1 class="fv-heading">フランチャイズ本部の構築から運営まで、<br class="hidden md:block">一括支援します。</h1>
+                        <p class="fv-sub">FC展開に必要な準備の整理から、本部構築・加盟店募集・運営支援・管理ツール開発まで対応します。</p>
+                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6">
+                            <button onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })" class="btn-white">支援内容を見る</button>
+                            <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="btn-outline-white">無料相談</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -489,6 +478,23 @@
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
+
+        /* Header: switch background on scroll */
+        (function() {
+            const headerEl = document.getElementById('site-header');
+            if (!headerEl) return;
+            const onScrollHeader = () => {
+                if (window.scrollY > 20) {
+                    headerEl.classList.add('header-scrolled');
+                    headerEl.classList.remove('header-transparent');
+                } else {
+                    headerEl.classList.remove('header-scrolled');
+                    headerEl.classList.add('header-transparent');
+                }
+            };
+            window.addEventListener('scroll', onScrollHeader);
+            onScrollHeader();
+        })();
 
         const fadeElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries) => {
