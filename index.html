@@ -147,9 +147,8 @@
         <div class="max-w-[1280px] mx-auto px-6 py-4 flex items-center justify-between gap-6">
             <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="text-base font-semibold text-slate-950">株式会社ORVINCIA</button>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-                <a href="#mission" class="nav-link">想い・理念</a>
                 <a href="#services" class="nav-link">支援内容</a>
-                <a href="#strengths" class="nav-link">弊社の強み</a>
+                <a href="#about" class="nav-link">代表について</a>
                 <a href="#company" class="nav-link">会社概要</a>
             </nav>
             <div class="flex items-center gap-4">
@@ -163,9 +162,8 @@
         </div>
         <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200 bg-white">
             <div class="px-6 py-6 space-y-4">
-                <a href="#mission" onclick="toggleMenu()" class="block text-base font-medium text-slate-700">想い・理念</a>
                 <a href="#services" onclick="toggleMenu()" class="block text-base font-medium text-slate-700">支援内容</a>
-                <a href="#strengths" onclick="toggleMenu()" class="block text-base font-medium text-slate-700">弊社の強み</a>
+                <a href="#about" onclick="toggleMenu()" class="block text-base font-medium text-slate-700">代表について</a>
                 <a href="#company" onclick="toggleMenu()" class="block text-base font-medium text-slate-700">会社概要</a>
                 <button onclick="toggleMenu(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="button-primary w-full rounded-full px-6 py-3 font-semibold">無料相談</button>
             </div>
@@ -178,40 +176,10 @@
             <div class="max-w-[1280px] mx-auto px-6 py-20 md:py-28 lg:py-32 relative z-10 flex min-h-[calc(100vh-96px)] items-center">
                 <div class="w-full lg:w-2/3">
                     <p class="text-sm uppercase tracking-[0.25em] text-slate-500 mb-8">フランチャイズ本部支援の実働パートナー</p>
-                    <h1 class="hero-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-950 leading-[1.02] max-w-3xl mb-8">加盟店の売上まで<br class="hidden md:block">責任を持つ、<br>洗練されたFC本部支援</h1>
-                    <p class="max-w-2xl text-lg md:text-xl leading-8 text-slate-600 mb-12">理念を言語化し、再現性の高いパッケージで加盟店の収益化まで一貫して伴走します。</p>
+                    <h1 class="hero-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-950 leading-[1.02] max-w-3xl mb-8">フランチャイズ本部の構築から運営まで、<br class="hidden md:block">一括支援します。</h1>
+                    <p class="max-w-2xl text-lg md:text-xl leading-8 text-slate-600 mb-12">FC展開に必要な準備の整理から、本部構築・加盟店募集・運営支援・管理ツール開発まで対応します。</p>
                     <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
                         <button onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })" class="button-primary rounded-full px-8 py-4 text-base font-semibold">支援内容を見る</button>
-                        <button onclick="document.getElementById('mission').scrollIntoView({ behavior: 'smooth' })" class="rounded-full border border-slate-200 px-8 py-4 text-base font-semibold text-slate-900 hover:border-blue-600 transition">私たちのこだわり</button>
-                    </div>
-                    <div class="mt-16 max-w-3xl">
-                        <div class="card-panel p-8">
-                            <p class="text-sm uppercase tracking-[0.3em] text-slate-500 mb-4">支援先の一部</p>
-                            <ul class="space-y-3 text-slate-700">
-                                <li>ドライヘッドスパ専門店アリエス</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="mission" class="section-bg-alt py-24 md:py-32">
-            <div class="max-w-[1280px] mx-auto px-6">
-                <div class="fade-in section-heading mb-12">
-                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">Our Philosophy</p>
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight">フランチャイズの本質は、「集合天才」である。</h2>
-                </div>
-                <div class="grid gap-10 lg:grid-cols-[1fr_0.8fr]">
-                    <div class="space-y-8 fade-in">
-                        <p class="text-lg leading-8 text-slate-600">成功事例と失敗事例を共有し、現場の知恵を組織に残すことが本部の本質です。社長の想いが届く構造をつくることで、ブランドは長く愛され続けます。</p>
-                        <p class="text-lg leading-8 text-slate-600">私たちは単なるアドバイザーではなく、加盟店の売上が上がり長期的に繁栄するまで伴走する実働パートナーです。</p>
-                    </div>
-                    <div class="card-panel p-10 fade-in">
-                        <div class="text-sm uppercase tracking-[0.25em] text-blue-600 mb-4">Representative Director</div>
-                        <h3 class="text-3xl font-bold text-slate-950 mb-4">本多 亮也</h3>
-                        <p class="text-slate-600 leading-8">教育ベンチャーにてFC立ち上げ・全22店舗展開を完遂。現場視点と戦略視点を兼ね備えた本部構築支援を提供します。</p>
-                        <div class="mt-8 border-t border-slate-200 pt-6 text-sm text-slate-500">"私たちは現場で起きている課題をしっかり受け止め、加盟店が収益を上げるまで共に汗を流す実働パートナーであることを約束します."</div>
                     </div>
                 </div>
             </div>
@@ -229,63 +197,16 @@
             </div>
         </section>
 
-        <section class="section-bg-alt py-24 md:py-32">
+        <section id="about" class="py-24 md:py-32">
             <div class="max-w-[1280px] mx-auto px-6">
                 <div class="fade-in section-heading mb-12">
-                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">立ち上げ期の視点</p>
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight">成長を止める「壁」を早期に見つける。</h2>
+                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">Representative</p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight">代表について</h2>
                 </div>
-                <div class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-                    <div class="space-y-8 fade-in">
-                        <p class="text-lg leading-8 text-slate-600">初期段階で理念を曖昧にしたまま拡大を進めると、品質低下や加盟店トラブルが増え、ブランドの信頼が失われます。</p>
-                        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <p class="text-xl font-semibold text-slate-950 leading-8">「今のモデルで本当に拡大していいのか？」</p>
-                            <p class="mt-4 text-slate-600">仕組みの総点検をプロの視点で行い、次のフェーズに進めるかを判断しましょう。</p>
-                        </div>
-                    </div>
-                    <div class="card-panel p-10 fade-in">
-                        <h3 class="text-2xl font-semibold text-slate-950 mb-6">0→1で陥りやすいリスク</h3>
-                        <ul class="space-y-6 text-slate-600">
-                            <li class="space-y-2">
-                                <div class="text-lg font-semibold text-slate-950">「社長しか売れない」属人化</div>
-                                <p>商談が社長個人に依存し、他の担当では成約できない状態です。</p>
-                            </li>
-                            <li class="space-y-2">
-                                <div class="text-lg font-semibold text-slate-950">サポート地獄による本部の停滞</div>
-                                <p>対応に追われて戦略業務が停止し、成長が止まります。</p>
-                            </li>
-                            <li class="space-y-2">
-                                <div class="text-lg font-semibold text-slate-950">「背中を見て覚えろ」の限界</div>
-                                <p>ノウハウが言語化されず、店舗ごとに品質がばらつきます。</p>
-                            </li>
-                        </ul>
-                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="button-primary mt-8 w-full rounded-full px-6 py-4 font-semibold">構築プランを相談する</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="strengths" class="py-24 md:py-32">
-            <div class="max-w-[1280px] mx-auto px-6">
-                <div class="fade-in section-heading mb-12">
-                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">Why ORVINCIA</p>
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight">選ばれ続ける、理由がある。</h2>
-                </div>
-                <div class="grid gap-8 lg:grid-cols-2">
-                    <div class="card-panel p-10 fade-in">
-                        <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-6">
-                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-slate-950 mb-4">圧倒的なマーケティング力</h3>
-                        <p class="text-slate-600 leading-8">月間1億円規模の運用実績から数千万ユーザーのサービス設計まで。実績のない状態から「選ばれる本部」へブランドを確立します。</p>
-                    </div>
-                    <div class="card-panel p-10 fade-in">
-                        <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-6">
-                            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-slate-950 mb-4">現場課題の解決支援</h3>
-                        <p class="text-slate-600 leading-8">加盟店の日常的な課題を丁寧に洗い出し、現場の改善と運営の安定化に向けた具体的な支援を続けます。</p>
-                    </div>
+                <div class="card-panel p-10 fade-in">
+                    <h3 class="text-3xl font-semibold text-slate-950 mb-4">本多 亮也</h3>
+                    <p class="text-lg font-semibold text-slate-700 mb-4">代表取締役</p>
+                    <p class="text-slate-600 leading-8">教育ベンチャーにてFC本部を立ち上げ22店舗を展開。その実績をもとに複数社のFC本部構築・拡大を支援。</p>
                 </div>
             </div>
         </section>
@@ -325,12 +246,11 @@
         <section id="contact" class="py-24 md:py-32">
             <div class="max-w-[1280px] mx-auto px-6">
                 <div class="fade-in section-heading mb-12">
-                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">本部構築・無料相談</p>
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight">その成功体験を、永続する組織へ。</h2>
+                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">お問い合わせ</p>
                 </div>
                 <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
                     <div class="space-y-8 fade-in">
-                        <p class="text-lg leading-8 text-slate-600">机上の空論ではなく、現場に寄り添う実践的な支援をご希望ならぜひご相談ください。</p>
+                        <p class="text-lg leading-8 text-slate-600">お気軽にご相談ください。</p>
                         <div class="card-panel p-8">
                             <div class="flex items-center gap-4">
                                 <div class="h-12 w-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
