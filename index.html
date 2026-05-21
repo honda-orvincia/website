@@ -1,656 +1,278 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-
 <head>
-    <!-- rebuild: 2026-05-20T16:56:00Z -->
-        <style>
-            /* 強制：FV見出しのサイズ（JSでの上書きや他スタイルより優先） */
-            @media (min-width: 1280px) {
-                .fv-heading { font-size: 6rem !important; }
-            }
-            @media (min-width: 768px) and (max-width: 1279px) {
-                .fv-heading { font-size: 5.2rem !important; }
-            }
-            @media (max-width: 767px) {
-                .fv-heading { font-size: 3rem !important; }
-            }
-        </style>
-    <meta charset="UTF-8">
-            /* Services carousel: typographic cards */
-            .services-carousel {
-                position: relative;
-                overflow: hidden;
-                padding: 40px 0;
-            }
-            .carousel-track {
-                display: flex;
-                gap: 28px;
-                align-items: stretch;
-                will-change: transform;
-                animation: carousel-scroll 30s linear infinite;
-            }
-            .carousel-slide {
-                flex: 0 0 auto;
-                width: 380px;
-                height: 480px;
-                border-radius: 32px;
-                position: relative;
-                display: flex;
-                align-items: flex-end;
-                padding: 28px;
-                box-sizing: border-box;
-            }
-            .carousel-slide .card-number {
-                position: absolute;
-                left: 24px;
-                top: 16px;
-                font-size: 5rem;
-                font-weight: 900;
-                opacity: 0.15;
-                line-height: 1;
-            }
-            .carousel-slide .card-title {
-                font-size: 2rem;
-                font-weight: 900;
-                margin: 0 0 8px 0;
-            }
-            .carousel-slide .card-desc {
-                margin: 0 0 18px 0;
-                font-size: 1rem;
-                line-height: 1.6;
-                max-width: 300px;
-            }
-            .carousel-slide .card-cta {
-                position: absolute;
-                right: 20px;
-                bottom: 20px;
-                width: 56px;
-                height: 56px;
-                border-radius: 999px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.25rem;
-                font-weight: 700;
-                cursor: pointer;
-                border: none;
-            }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ORVINCIA — フランチャイズ本部支援</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--white:#ffffff;--blue:#2563eb;--navy:#0f172a;--muted:#f8fafc;--card4:#eff6ff}
+    html,body{height:100%;margin:0;font-family:'Inter','Noto Sans JP',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--navy);background:var(--white);-webkit-font-smoothing:antialiased}
+    *{box-sizing:border-box}
 
-            /* color variants */
-            .card-1 { background: #0f172a; color: #ffffff; }
-            .card-2 { background: #2563eb; color: #ffffff; }
-            .card-3 { background: #ffffff; color: #0f172a; border: 1px solid #e2e8f0; }
-            .card-4 { background: #eff6ff; color: #0f172a; }
+    /* Header */
+    header{height:64px;background:var(--white);border-bottom:1px solid rgba(15,23,42,0.08);display:flex;align-items:center;position:fixed;top:0;left:0;right:0;z-index:60;padding:0 28px;transition:box-shadow .22s}
+    header.scrolled{box-shadow:0 6px 24px rgba(15,23,42,0.06)}
+    .container{max-width:1280px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:900;color:var(--navy);font-size:1.125rem;border:none;background:none}
+    nav a{margin-left:28px;text-decoration:none;color:var(--navy);font-weight:700}
+    .cta-btn{background:var(--blue);color:var(--white);padding:10px 18px;border-radius:999px;border:none;font-weight:700}
 
-            /* CTA styles per card */
-            .card-1 .card-cta { background: #ffffff; color: #0f172a; }
-            .card-2 .card-cta { background: #ffffff; color: #2563eb; }
-            .card-3 .card-cta { background: #2563eb; color: #ffffff; }
-            .card-4 .card-cta { background: #2563eb; color: #ffffff; }
+    main{padding-top:64px}
 
-            /* pause on hover */
-            .services-carousel:hover .carousel-track { animation-play-state: paused; }
+    /* FV */
+    .hero{min-height:100vh;display:flex;align-items:center;padding:56px 28px}
+    .hero .left{flex:1;padding-right:40px}
+    .hero .label{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:18px}
+    .hero h1{margin:0;font-weight:900;line-height:1.02;font-size:clamp(2.5rem,5vw,4.5rem);color:var(--navy);margin-bottom:18px}
+    .hero p{margin:0;color:rgba(15,23,42,0.8);font-size:1.125rem;margin-bottom:28px}
 
-            @keyframes carousel-scroll {
-                from { transform: translateX(0); }
-                to { transform: translateX(-50%); }
-            }
+    .hero .right{flex:1;display:flex;align-items:center;justify-content:center}
+    .network-svg{width:420px;height:420px}
 
-            /* gradient fades */
-            .carousel-fade-left, .carousel-fade-right {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                width: 140px;
-                pointer-events: none;
-                z-index: 20;
-            }
-            .carousel-fade-left { left: 0; background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0)); }
-            .carousel-fade-right { right: 0; background: linear-gradient(270deg, rgba(255,255,255,1), rgba(255,255,255,0)); }
-            /* dark page: make fades translucent over dark bg */
-            @media (prefers-color-scheme: dark) {
-                .carousel-fade-left, .carousel-fade-right { background: linear-gradient(90deg, #0a0a0a, rgba(10,10,10,0)); }
-            }
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>株式会社ORVINCIA | フランチャイズ本部支援</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            font-family: 'Inter', 'Noto Sans JP', sans-serif;
-        }
+    /* Services carousel */
+    .services-section{background:var(--muted);padding:64px 28px;overflow:hidden}
+    .section-inner{max-width:1280px;margin:0 auto}
+    .services-title{font-weight:900;font-size:2rem;color:var(--navy);margin:0 0 28px;text-align:left}
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            color: #0f172a;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            background: #ffffff;
-        }
+    .carousel{position:relative;padding:28px 0}
+    .carousel-track{display:flex;gap:28px;align-items:stretch;animation:scroll 30s linear infinite}
+    .carousel:hover .carousel-track{animation-play-state:paused}
+    .carousel-slide{flex:0 0 auto;width:380px;height:480px;border-radius:32px;position:relative;padding:28px;color:var(--navy);display:flex;flex-direction:column;justify-content:flex-end}
+    .carousel-slide .num{position:absolute;left:20px;top:10px;font-weight:900;font-size:4.25rem;opacity:.12}
+    .carousel-slide h3{margin:0;font-size:1.25rem;font-weight:900}
+    .carousel-slide p{margin:12px 0 0;font-size:1rem;line-height:1.6}
+    .carousel-slide .go{position:absolute;right:20px;bottom:20px;width:56px;height:56px;border-radius:999px;border:none;font-weight:900;cursor:pointer}
 
-        /* --- First View (FV) --- */
-        .fv-hero {
-            position: relative;
-            min-height: 100vh;
-            overflow: hidden;
-            background-color: #0a0a0a;
-        }
+    .card-1{background:var(--navy);color:var(--white)}
+    .card-2{background:var(--blue);color:var(--white)}
+    .card-3{background:var(--white);color:var(--navy);border:1px solid rgba(15,23,42,0.06)}
+    .card-4{background:var(--card4);color:var(--navy)}
 
-        .fv-bg {
-            position: absolute;
-            inset: 0;
-            background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.22; /* 薄く重ねる */
-            z-index: 0;
-            transform: scale(1.02);
-        }
+    .fade-left,.fade-right{position:absolute;top:0;bottom:0;width:140px;z-index:30;pointer-events:none}
+    .fade-left{left:0;background:linear-gradient(90deg,var(--muted),rgba(248,250,252,0))}
+    .fade-right{right:0;background:linear-gradient(270deg,var(--muted),rgba(248,250,252,0))}
 
-        .fv-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.7); /* black 70% */
-            z-index: 1;
-        }
+    @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-        .fv-content {
-            position: relative;
-            z-index: 2;
-            color: #ffffff;
-            padding-top: 6rem;
-            padding-bottom: 6rem;
-        }
+    /* Representative */
+    .rep{padding:120px 28px;display:flex;align-items:center}
+    .rep .left{flex:1}
+    .rep h2{margin:0;font-size:1.125rem;color:var(--blue);font-weight:700}
+    .rep .name{font-size:3rem;font-weight:900;margin:18px 0}
+    .rep .bio{color:rgba(15,23,42,0.85)}
+    .rep .decor{flex:1;display:flex;align-items:center;justify-content:center}
+    .decor-box{width:240px;height:240px;background:var(--blue);border-radius:12px}
 
-        .fv-heading {
-            color: #ffffff;
-            font-weight: 800;
-            line-height: 1.02;
-            font-size: 3rem !important; /* mobile */
-            max-width: 64rem;
-            margin-bottom: 1.25rem;
-        }
+    /* Company */
+    .company{background:var(--muted);padding:48px 28px}
+    .company table{width:100%;border-collapse:collapse;background:var(--white);border-radius:12px;overflow:hidden}
+    .company th{text-align:left;padding:14px 18px;background:var(--muted);font-weight:700}
+    .company td{padding:14px 18px;border-top:1px solid rgba(15,23,42,0.04)}
 
-        .fv-sub {
-            color: rgba(255,255,255,0.9);
-            max-width: 56rem;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
+    /* Contact */
+    .contact{padding:48px 28px}
+    .contact .wrap{max-width:1280px;margin:0 auto;display:flex;gap:40px}
+    .contact .left{flex:1}
+    .contact .right{flex:1}
+    .input{width:100%;padding:12px 14px;border:1px solid rgba(15,23,42,0.08);border-radius:12px;margin-bottom:12px}
+    .submit{background:var(--blue);color:var(--white);padding:12px 16px;border-radius:12px;border:none;font-weight:700}
 
-        @media (min-width: 768px) {
-            .fv-heading { font-size: 5.2rem !important; }
-            .fv-sub { font-size: 1.125rem; }
-            .fv-content { padding-top: 8rem; padding-bottom: 8rem; }
-        }
+    footer{background:var(--navy);color:var(--white);padding:20px 28px}
+    .footer-inner{max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 
-        /* Buttons for FV */
-        .btn-white {
-            background: #ffffff;
-            color: #000000;
-            border-radius: 9999px;
-            padding: 1rem 1.6rem;
-            font-weight: 700;
-            border: none;
-        }
+    /* Intersection animation util */
+    .fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+    .fade-in.visible{opacity:1;transform:none}
 
-        .btn-outline-white {
-            background: transparent;
-            color: #ffffff;
-            border-radius: 9999px;
-            padding: 0.9rem 1.6rem;
-            font-weight: 700;
-            border: 2px solid rgba(255,255,255,0.95);
-        }
-
-        /* Keep existing components usable */
-        .section-bg-alt { background: #f8fafc; }
-        .card-panel { background: #ffffff; border: 1px solid rgba(37, 99, 235, 0.12); box-shadow: 0 22px 60px rgba(15, 23, 42, 0.05); border-radius: 32px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card-panel:hover { transform: translateY(-6px); box-shadow: 0 32px 80px rgba(15, 23, 42, 0.12); }
-        .input-field { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 1rem 1.25rem; transition: border-color 0.25s ease, box-shadow 0.25s ease; }
-        .input-field:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12); }
-
-        .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        .blur-circle { position: absolute; bottom: -80px; left: -80px; width: 420px; height: 420px; background: rgba(37, 99, 235, 0.14); filter: blur(96px); border-radius: 50%; pointer-events: none; z-index: 0; }
-
-        .count-number { font-variant-numeric: tabular-nums; }
-        .section-heading { max-width: 720px; }
-
-        .is-sticky { position: sticky; top: 0; z-index: 60; }
-
-        /* Header: transparent initially, becomes black on scroll */
-        .header-transparent { background: transparent; color: #ffffff; border-bottom: none; transition: background-color 0.25s ease, box-shadow 0.25s ease; }
-        .header-scrolled { background: #000000; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
-
-        .nav-link { position: relative; color: rgba(255,255,255,0.95); }
-        .nav-link::after { content: ''; position: absolute; left: 0; bottom: -3px; width: 0; height: 2px; background: rgba(255,255,255,0.9); transition: width 0.25s ease; }
-        .nav-link:hover::after { width: 100%; }
-    </style>
+    @media(max-width:900px){.hero{flex-direction:column}.hero .left{padding-right:0}.carousel-track{gap:18px}}
+  </style>
 </head>
-
 <body>
-    <header id="site-header" class="is-sticky header-transparent">
-        <div class="max-w-[1280px] mx-auto px-6 py-4 flex items-center justify-between gap-6">
-            <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="text-base font-semibold text-white">株式会社ORVINCIA</button>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <a href="#mission" class="nav-link">想い・理念</a>
-                    <a href="#services" class="nav-link">支援内容</a>
-                    <a href="#strengths" class="nav-link">弊社の強み</a>
-                    <a href="#company" class="nav-link">会社概要</a>
-            </nav>
-            <div class="flex items-center gap-4">
-                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="btn-white rounded-full text-sm font-semibold">無料相談</button>
-                <button id="mobile-menu-button" class="md:hidden p-2 text-white" onclick="toggleMenu()" aria-label="メニュー">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+  <header id="site-header">
+    <div class="container">
+      <button class="logo" onclick="location.href='#'">ORVINCIA</button>
+      <nav>
+        <a href="#services">事業内容</a>
+        <a href="#rep" style="margin-left:18px">代表について</a>
+        <a href="#company" style="margin-left:18px">会社概要</a>
+        <a href="#contact" style="margin-left:18px"><button class="cta-btn">お問い合わせ</button></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- FV -->
+    <section class="hero">
+      <div class="left">
+        <div class="label">フランチャイズ本部支援の実働パートナー</div>
+        <h1>フランチャイズ本部の構築から、運営まで。</h1>
+        <p>FC展開に必要な準備の整理から、本部構築・加盟店募集・運営支援・管理ツール開発まで対応します。</p>
+        <div style="margin-top:24px">
+          <a href="#contact" class="cta-btn">お問い合わせ</a>
         </div>
-            <div id="mobile-menu" class="md:hidden hidden border-t border-slate-800 bg-black/90 text-white">
-                <div class="px-6 py-6 space-y-4">
-                    <a href="#mission" onclick="toggleMenu()" class="block text-base font-medium text-white">想い・理念</a>
-                    <a href="#services" onclick="toggleMenu()" class="block text-base font-medium text-white">支援内容</a>
-                    <a href="#strengths" onclick="toggleMenu()" class="block text-base font-medium text-white">弊社の強み</a>
-                    <a href="#company" onclick="toggleMenu()" class="block text-base font-medium text-white">会社概要</a>
-                    <button onclick="toggleMenu(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="btn-white w-full rounded-full px-6 py-3 font-semibold">無料相談</button>
-                </div>
-            </div>
-    </header>
+      </div>
+      <div class="right">
+        <!-- Simple network SVG animation -->
+        <svg class="network-svg" viewBox="0 0 420 420" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1">
+              <stop offset="0" stop-color="#2563eb" stop-opacity="1" />
+              <stop offset="1" stop-color="#0f172a" stop-opacity="1" />
+            </linearGradient>
+          </defs>
+          <g transform="translate(210,210)">
+            <!-- center -->
+            <circle cx="0" cy="0" r="48" fill="url(#g)" />
+            <g id="nodes">
+              <g class="node" transform="translate(0,-140)"><circle r="18" fill="#2563eb"/><circle r="8" fill="#ffffff" /></g>
+              <g class="node" transform="translate(121,-70)"><circle r="14" fill="#2563eb"/><circle r="6" fill="#ffffff"/></g>
+              <g class="node" transform="translate(121,70)"><circle r="14" fill="#2563eb"/><circle r="6" fill="#ffffff"/></g>
+              <g class="node" transform="translate(0,140)"><circle r="18" fill="#2563eb"/><circle r="8" fill="#ffffff"/></g>
+              <g class="node" transform="translate(-121,70)"><circle r="14" fill="#2563eb"/><circle r="6" fill="#ffffff"/></g>
+              <g class="node" transform="translate(-121,-70)"><circle r="14" fill="#2563eb"/><circle r="6" fill="#ffffff"/></g>
+            </g>
+            <g id="connectors" stroke="#2563eb" stroke-width="2" fill="none">
+              <line x1="0" y1="0" x2="0" y2="-140" stroke-linecap="round" />
+              <line x1="0" y1="0" x2="121" y2="-70" stroke-linecap="round" />
+              <line x1="0" y1="0" x2="121" y2="70" stroke-linecap="round" />
+              <line x1="0" y1="0" x2="0" y2="140" stroke-linecap="round" />
+              <line x1="0" y1="0" x2="-121" y2="70" stroke-linecap="round" />
+              <line x1="0" y1="0" x2="-121" y2="-70" stroke-linecap="round" />
+            </g>
+          </g>
+        </svg>
+      </div>
+    </section>
 
-    <main>
-        <section id="hero" class="fv-hero">
-            <div class="fv-bg" aria-hidden="true"></div>
-            <div class="fv-overlay" aria-hidden="true"></div>
-            <div class="fv-content">
-                <div class="max-w-[1280px] mx-auto px-6 relative z-10 flex min-h-[calc(100vh-96px)] items-center">
-                    <div class="w-full lg:w-2/3">
-                        <p class="text-sm uppercase tracking-[0.25em] text-white/80 mb-8">フランチャイズ本部支援の実働パートナー</p>
-                        <h1 class="fv-heading">フランチャイズ本部の構築から運営まで、<br class="hidden md:block">一括支援します。</h1>
-                        <p class="fv-sub">FC展開に必要な準備の整理から、本部構築・加盟店募集・運営支援・管理ツール開発まで対応します。</p>
-                        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-6">
-                            <button onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })" class="btn-white">支援内容を見る</button>
-                            <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="btn-outline-white">無料相談</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="py-24 md:py-32">
-            <div class="max-w-[1280px] mx-auto px-6">
-                <div class="fade-in section-heading mb-12">
-                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">支援プログラム</p>
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight">「理念」を「パッケージ」へ。</h2>
-                    <p class="mt-6 max-w-2xl text-lg text-slate-600">強固なパッケージと自走する営業組織、2つの軸でFC展開を成功へと導きます。</p>
-                </div>
-                <div id="services-carousel" class="services-carousel">
-                    <div class="carousel-track" id="carousel-track" aria-hidden="false">
-                        <!-- slides injected by JS -->
-                    </div>
-                    <div class="carousel-fade-left"></div>
-                    <div class="carousel-fade-right"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-24 md:py-32">
-            <div class="max-w-[1280px] mx-auto px-6">
-                <div class="fade-in section-heading mb-12">
-                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">Representative</p>
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight">代表について</h2>
-                </div>
-                <div class="card-panel p-10 fade-in">
-                    <h3 class="text-3xl font-semibold text-slate-950 mb-4">本多 亮也</h3>
-                    <p class="text-lg font-semibold text-slate-700 mb-4">代表取締役</p>
-                    <p class="text-slate-600 leading-8">教育ベンチャーにてFC本部を立ち上げ22店舗を展開。その実績をもとに複数社のFC本部構築・拡大を支援。</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="company" class="section-bg-alt py-24 md:py-32">
-            <div class="max-w-[1280px] mx-auto px-6">
-                <div class="fade-in section-heading mb-12">
-                    <h2 class="text-4xl md:text-5xl font-bold text-slate-950 leading-tight">会社概要</h2>
-                </div>
-                <div class="card-panel p-10 md:p-14 fade-in">
-                    <div class="grid gap-10 md:grid-cols-2">
-                        <div>
-                            <p class="text-xs uppercase tracking-[0.3em] text-blue-600 mb-3">Company Name</p>
-                            <p class="text-xl font-semibold text-slate-950">株式会社ORVINCIA</p>
-                        </div>
-                        <div>
-                            <p class="text-xs uppercase tracking-[0.3em] text-blue-600 mb-3">Founded</p>
-                            <p class="text-xl font-semibold text-slate-950">2026年2月2日</p>
-                        </div>
-                        <div class="md:col-span-2">
-                            <p class="text-xs uppercase tracking-[0.3em] text-blue-600 mb-3">Location</p>
-                            <p class="text-xl font-semibold text-slate-950 leading-8">東京都渋谷区道玄坂1丁目10-8<br>渋谷道玄坂東急ビル 2F-C</p>
-                        </div>
-                        <div class="md:col-span-2 space-y-4">
-                            <p class="text-xs uppercase tracking-[0.3em] text-blue-600">Business</p>
-                            <ul class="space-y-3 text-slate-600">
-                                <li>理念継承型 フランチャイズ本部構築支援</li>
-                                <li>加盟店募集マーケティング・実働型集客支援</li>
-                                <li>管理ツールの開発による運営効率化支援</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-24 md:py-32">
-            <div class="max-w-[1280px] mx-auto px-6">
-                <div class="fade-in section-heading mb-12">
-                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-4">お問い合わせ</p>
-                </div>
-                <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-                    <div class="space-y-8 fade-in">
-                        <p class="text-lg leading-8 text-slate-600">お気軽にご相談ください。</p>
-                        <div class="card-panel p-8">
-                            <div class="flex items-center gap-4">
-                                <div class="h-12 w-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center">
-                                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                </div>
-                                <div>
-                                    <p class="text-xs uppercase tracking-[0.3em] text-slate-500">Mail Address</p>
-                                    <p class="text-xl font-semibold text-slate-950">honda@orvincia.com</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-panel p-8 md:p-12 fade-in">
-                        <form action="https://formspree.io/f/mkoplpod" method="POST" class="space-y-6">
-                            <div class="grid gap-6 md:grid-cols-2">
-                                <label class="space-y-3">
-                                    <span class="text-sm font-semibold text-slate-700">お名前</span>
-                                    <input class="input-field w-full text-base" type="text" name="name" required placeholder="山田 太郎">
-                                </label>
-                                <label class="space-y-3">
-                                    <span class="text-sm font-semibold text-slate-700">貴社名</span>
-                                    <input class="input-field w-full text-base" type="text" name="company" placeholder="株式会社〇〇">
-                                </label>
-                            </div>
-                            <label class="space-y-3">
-                                <span class="text-sm font-semibold text-slate-700">メールアドレス</span>
-                                <input class="input-field w-full text-base" type="email" name="email" required placeholder="honda@orvincia.com">
-                            </label>
-                            <label class="space-y-3">
-                                <span class="text-sm font-semibold text-slate-700">ご相談内容</span>
-                                <textarea class="input-field w-full min-h-[160px] text-base" name="message" required placeholder="現状のモデルやFC化を検討されている背景、売上の課題など"></textarea>
-                            </label>
-                            <button type="submit" class="button-primary w-full rounded-full px-8 py-4 text-base font-semibold">送信する</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="border-t border-slate-200 bg-white py-10">
-        <div class="max-w-[1280px] mx-auto px-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between text-sm text-slate-500">
-            <p>©2026 ORVINCIA Co., Ltd. All rights reserved.</p>
-            <button onclick="openPrivacyModal()" class="font-medium text-slate-700 hover:text-blue-600">プライバシーポリシー</button>
+    <!-- Services carousel -->
+    <section id="services" class="services-section">
+      <div class="section-inner">
+        <h2 class="services-title">事業内容</h2>
+        <div class="carousel">
+          <div class="carousel-track" id="carousel-track">
+            <article class="carousel-slide card-1 fade-in">
+              <div class="num">01</div>
+              <h3>FC本部構築</h3>
+              <p>本部設計・マニュアル整備・契約整備を行い、再現性の高いパッケージを構築します。</p>
+              <button class="go">→</button>
+            </article>
+            <article class="carousel-slide card-2 fade-in">
+              <div class="num">02</div>
+              <h3>加盟店募集</h3>
+              <p>広告設計・LP制作・説明会運営で、加盟希望者を効果的に集めます。</p>
+              <button class="go">→</button>
+            </article>
+            <article class="carousel-slide card-3 fade-in">
+              <div class="num">03</div>
+              <h3>FC運営支援</h3>
+              <p>日常的な現場支援と教育で、加盟店の営業力と定着を高めます。</p>
+              <button class="go">→</button>
+            </article>
+            <article class="carousel-slide card-4 fade-in">
+              <div class="num">04</div>
+              <h3>管理ツール</h3>
+              <p>業務の見える化と効率化を促進する社内ツールを開発します。</p>
+              <button class="go">→</button>
+            </article>
+          </div>
+          <div class="fade-left"></div>
+          <div class="fade-right"></div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <div id="modal-container"></div>
+    <!-- Representative -->
+    <section id="rep" class="rep">
+      <div class="left">
+        <h2>代表について</h2>
+        <div class="name">本多 亮也</div>
+        <div class="meta">代表取締役</div>
+        <p class="bio">教育ベンチャーにてFC本部を立ち上げ22店舗を展開。その実績をもとに複数社のFC本部構築・拡大を支援。</p>
+      </div>
+      <div class="decor"><div class="decor-box" aria-hidden="true"></div></div>
+    </section>
 
-    <script>
-        const services = [
-            {
-                id: 'building',
-                title: 'FC本部構築',
-                desc: 'FC展開に必要な要素を整理し、マニュアル・契約書・研修体制などの作成まで一括対応します。',
-                tags: ['FC構築', 'マニュアル作成', '研修体制'],
-                details: {
-                    problem: 'FC展開の準備が整っていなければ、加盟店が安定して立ち上がることはできません。',
-                    solution: '社長に代わり、初期から本部立ち上げまでを仕切るFC本部のプロデューサーとして支援します。',
-                    steps: ['FC展開に必要な要素の整理・提示', 'マニュアル・契約書・研修体制の一括作成', '本部立ち上げの設計と実行サポート']
-                }
-            },
-            {
-                id: 'advertising',
-                title: '加盟店募集の広告運用',
-                desc: 'Web広告・LP制作・説明会集客などで、加盟希望者を集めるための実働支援を行います。',
-                tags: ['Web広告', 'LP制作', '説明会集客'],
-                details: {
-                    problem: '加盟希望者を効率的に集める仕組みがないと、採用が停滞します。',
-                    solution: 'ターゲットに届く広告と説明会の集客設計で、加盟希望者の獲得を後押しします。',
-                    steps: ['加盟希望者向けLPの制作', 'Web広告の運用と最適化', '説明会や個別相談会の集客支援']
-                }
-            },
-            {
-                id: 'operations',
-                title: 'FC運営の業務支援',
-                desc: '加盟店への日常的なサポートや現場課題の解決を通じて、開業後も並走します。',
-                tags: ['現場サポート', '課題解決', '運営支援'],
-                details: {
-                    problem: '開業後の課題が放置されると、加盟店の定着や収益化が進みません。',
-                    solution: '日常的なサポートと現場課題の解決を通じて、加盟店運営の安定化を目指します。',
-                    steps: ['加盟店の現場課題の把握', '改善策の提案と実行支援', '運営体制の定着まで継続的に伴走']
-                }
-            },
-            {
-                id: 'tools',
-                title: '管理ツールの開発',
-                desc: 'FC運営を効率化する管理ツールを自社開発し、業務の見える化と手間削減を実現します。',
-                tags: ['運営効率化', 'ツール開発', '見える化'],
-                details: {
-                    problem: '管理工数がかさみ、運営の質が維持できないことがあります。',
-                    solution: 'FC運営を効率化する専用ツールの開発で、業務をシンプルにします。',
-                    steps: ['運営課題のヒアリング', '要件設計とツール開発', '運用導入とサポート']
-                }
-            }
-        ];
+    <!-- Company -->
+    <section id="company" class="company">
+      <div class="section-inner">
+        <h2 style="font-weight:900;margin-bottom:18px">会社概要</h2>
+        <table>
+          <tr><th>会社名</th><td>株式会社ORVINCIA</td></tr>
+          <tr><th>設立</th><td>2026年2月2日</td></tr>
+          <tr><th>所在地</th><td>東京都渋谷区道玄坂1丁目10-8 渋谷道玄坂東急ビル 2F-C</td></tr>
+          <tr><th>事業内容</th><td>理念継承型本部構築支援 / 加盟店募集支援 / 管理ツール開発</td></tr>
+        </table>
+      </div>
+    </section>
 
-        // Build typographic carousel slides from services array
-        const carouselTrack = document.getElementById('carousel-track');
-        const slideItems = services.map((service, idx) => {
-            const num = String(idx + 1).padStart(2, '0');
-            const cardClass = `card-${(idx % 4) + 1}`;
-            return `
-                <div class="carousel-slide ${cardClass}" role="group" aria-label="service ${num}">
-                    <div class="card-number">${num}</div>
-                    <div>
-                        <h3 class="card-title">${service.title}</h3>
-                        <p class="card-desc">${service.desc}</p>
-                    </div>
-                    <button class="card-cta" aria-label="詳しく見る" onclick="openModal('${service.id}')">→</button>
-                </div>
-            `;
-        }).join('');
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="section-inner wrap">
+        <div class="left">
+          <h3 style="font-size:1.5rem;margin:0 0 12px">お気軽にご相談ください。</h3>
+          <p style="margin:0 0 18px;color:rgba(15,23,42,0.8)">メール: <a href="mailto:honda@orvincia.com">honda@orvincia.com</a></p>
+        </div>
+        <div class="right">
+          <form action="https://formspree.io/f/mkoplpod" method="POST">
+            <input class="input" name="name" placeholder="お名前" required />
+            <input class="input" name="company" placeholder="貴社名（任意）" />
+            <input class="input" type="email" name="email" placeholder="メールアドレス" required />
+            <textarea class="input" name="message" placeholder="ご相談内容" rows="6" required></textarea>
+            <button class="submit" type="submit">送信する</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        // Duplicate slides for seamless loop
-        carouselTrack.innerHTML = slideItems + slideItems;
+  <footer>
+    <div class="footer-inner">
+      <div>©2026 ORVINCIA Co., Ltd.</div>
+      <div><a href="#" style="color:inherit;text-decoration:underline">プライバシーポリシー</a></div>
+    </div>
+  </footer>
 
-        // Pause animation when user interacts via keyboard focus on track
-        carouselTrack.addEventListener('focusin', () => carouselTrack.style.animationPlayState = 'paused');
-        carouselTrack.addEventListener('focusout', () => carouselTrack.style.animationPlayState = 'running');
+  <script>
+    // Header sticky shadow on scroll
+    const header = document.getElementById('site-header');
+    const onScroll = () => {
+      if(window.scrollY > 20) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
 
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
+    // IntersectionObserver fade-in
+    const fades = document.querySelectorAll('.fade-in');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, {threshold:0.15});
+    fades.forEach(el=>io.observe(el));
 
-        function openModal(id) {
-            const service = services.find(item => item.id === id);
-            if (!service) return;
-            const modalHtml = `
-                <div id="modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                    <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm" onclick="closeModal()"></div>
-                    <div class="relative z-10 w-full max-w-3xl rounded-[32px] bg-white p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
-                        <button onclick="closeModal()" class="absolute right-5 top-5 text-slate-400 hover:text-slate-700">
-                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </button>
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-blue-700">
-                                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                                </div>
-                                <h3 class="text-2xl font-semibold text-slate-950">${service.title}</h3>
-                            </div>
-                            <div class="grid gap-8 md:grid-cols-2">
-                                <div>
-                                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-3">解決する課題</p>
-                                    <p class="text-slate-600 leading-7">${service.details.problem}</p>
-                                </div>
-                                <div>
-                                    <p class="text-sm uppercase tracking-[0.3em] text-blue-600 mb-3">ORVINCIAのアプローチ</p>
-                                    <p class="text-slate-600 leading-7">${service.details.solution}</p>
-                                </div>
-                            </div>
-                            <div class="rounded-3xl border border-blue-100 bg-blue-50 p-6">
-                                <p class="text-sm uppercase tracking-[0.3em] text-slate-600 mb-4">支援ステップ</p>
-                                <ul class="space-y-4">
-                                    ${service.details.steps.map((step, index) => `<li class="flex gap-3"><span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white text-sm font-semibold">${index + 1}</span><span class="text-slate-700 leading-7">${step}</span></li>`).join('')}
-                                </ul>
-                            </div>
-                            <button onclick="closeModal(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="button-primary w-full rounded-full px-6 py-4 text-sm font-semibold">無料相談する</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.getElementById('modal-container').innerHTML = modalHtml;
-            document.body.style.overflow = 'hidden';
-        }
+    // Carousel: duplicate slides for seamless loop
+    const track = document.getElementById('carousel-track');
+    function duplicateSlides(){
+      const slides = Array.from(track.children);
+      slides.forEach(s => track.appendChild(s.cloneNode(true)));
+    }
+    duplicateSlides();
 
-        function openPrivacyModal() {
-            const content = `
-                <div id="modal-overlay" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
-                    <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm" onclick="closeModal()"></div>
-                    <div class="relative z-10 w-full max-w-4xl rounded-[32px] bg-white p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
-                        <button onclick="closeModal()" class="absolute right-5 top-5 text-slate-400 hover:text-slate-700">
-                            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </button>
-                        <div class="space-y-6 text-slate-700 text-sm leading-7">
-                            <h2 class="text-3xl font-semibold text-slate-950">プライバシーポリシー</h2>
-                            <p>本ポリシーの主体：株式会社ORVINCIA（以下「当社」）当社は、本ウェブサイト「本ポリシー」）を定めます。</p>
-                            <h3 class="text-xl font-semibold text-slate-950">1. 取得する個人情報の種類</h3>
-                            <p>当社は、本サービスの提供にあたり、以下の情報を取得します。</p>
-                            <p class="font-semibold text-slate-950">1-1. お問い合わせおよびご利用者から取得する情報</p>
-                            <div class="overflow-hidden rounded-3xl border border-slate-200 text-sm">
-                                <div class="grid grid-cols-3 gap-4 bg-slate-50 p-4 text-slate-600 font-semibold">
-                                    <div>種別</div>
-                                    <div class="col-span-2">具体的な情報</div>
-                                </div>
-                                <div class="grid grid-cols-3 gap-4 border-t border-slate-200 p-4">
-                                    <div class="font-bold text-slate-800">お問い合わせ情報</div>
-                                    <div class="col-span-2">氏名、貴社名、メールアドレス、お問い合わせ内容</div>
-                                </div>
-                                <div class="grid grid-cols-3 gap-4 border-t border-slate-200 p-4">
-                                    <div class="font-bold text-slate-800">アカウント情報</div>
-                                    <div class="col-span-2">氏名、メールアドレス、所属部署、役職</div>
-                                </div>
-                                <div class="grid grid-cols-3 gap-4 border-t border-slate-200 p-4">
-                                    <div class="font-bold text-slate-800">商談録音・録画データ</div>
-                                    <div class="col-span-2">音声ファイル、動画ファイル（商談相手の声・映像を含む）</div>
-                                </div>
-                                <div class="grid grid-cols-3 gap-4 border-t border-slate-200 p-4">
-                                    <div class="font-bold text-slate-800">入力情報</div>
-                                    <div class="col-span-2">商談メモ、顧客名、商談日時、その他手動で入力した情報</div>
-                                </div>
-                                <div class="grid grid-cols-3 gap-4 border-t border-slate-200 p-4">
-                                    <div class="font-bold text-slate-800">利用ログ</div>
-                                    <div class="col-span-2">アクセス日時、操作履歴、IPアドレス、端末情報</div>
-                                </div>
-                            </div>
-                            <h3 class="text-xl font-semibold text-slate-950">2. 利用目的</h3>
-                            <p>本サービス提供・運営、商談分析結果の生成、問い合わせ対応、不正防止、品質改善のための分析、法令対応など。</p>
-                            <h3 class="text-xl font-semibold text-slate-950">3. 商談相手の個人情報について</h3>
-                            <p>商談録音には第三者の個人情報が含まれる場合があります。録音前に同意を取得する責任は利用者にあります。</p>
-                            <h3 class="text-xl font-semibold text-slate-950">4. 第三者提供</h3>
-                            <p>本人同意または法令に基づく場合を除き、第三者提供は行いません。</p>
-                            <h3 class="text-xl font-semibold text-slate-950">5. 保存期間・削除</h3>
-                            <p>お問い合わせ情報は対応完了後合理的期間、アカウントデータは契約期間中に保存します。削除請求に応じて対応します。</p>
-                            <h3 class="text-xl font-semibold text-slate-950">6. 安全管理措置</h3>
-                            <p>HTTPS、アクセス制御、不正検知、従業員教育などを実施します。</p>
-                            <h3 class="text-xl font-semibold text-slate-950">7. ご本人の権利</h3>
-                            <p>開示・訂正・削除・利用停止などをご請求いただけます。</p>
-                            <h3 class="text-xl font-semibold text-slate-950">8. ポリシー変更</h3>
-                            <p>法令改正やサービス変更に応じて本ポリシーを更新する場合があります。</p>
-                            <h3 class="text-xl font-semibold text-slate-950">9. お問い合わせ</h3>
-                            <p>個人情報に関するお問い合わせは以下まで。<br>株式会社ORVINCIA<br>住所：〒150-0043 東京都渋谷区道玄坂1丁目10番8号 渋谷道玄坂東急ビル2F-C<br>Email：honda@orvincia.com</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            document.getElementById('modal-container').innerHTML = content;
-            document.body.style.overflow = 'hidden';
-        }
+    // Pause animation when window not visible
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.hidden) track.style.animationPlayState='paused'; else track.style.animationPlayState='running';
+    });
 
-        function closeModal() {
-            document.getElementById('modal-container').innerHTML = '';
-            document.body.style.overflow = '';
-        }
+    // Simple animation for SVG connectors (draw)
+    const connectors = document.querySelectorAll('#connectors line');
+    connectors.forEach((ln, i)=>{
+      const len = ln.getTotalLength ? ln.getTotalLength() : 200;
+      ln.style.strokeDasharray = len;
+      ln.style.strokeDashoffset = len;
+      ln.style.transition = `stroke-dashoffset .6s ${i*0.18}s ease-out`;
+      setTimeout(()=>{ ln.style.strokeDashoffset = '0'; }, 200);
+    });
 
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        /* Header: switch background on scroll */
-        (function() {
-            const headerEl = document.getElementById('site-header');
-            if (!headerEl) return;
-            const onScrollHeader = () => {
-                if (window.scrollY > 20) {
-                    headerEl.classList.add('header-scrolled');
-                    headerEl.classList.remove('header-transparent');
-                } else {
-                    headerEl.classList.remove('header-scrolled');
-                    headerEl.classList.add('header-transparent');
-                }
-            };
-            window.addEventListener('scroll', onScrollHeader);
-            onScrollHeader();
-        })();
-
-        /* Ensure fv-heading responsive size (force override when CSS is overridden) */
-        (function() {
-            const setHeading = () => {
-                const h = document.querySelector('.fv-heading');
-                if (!h) return;
-                const sw = window.screen && window.screen.width ? window.screen.width : window.innerWidth;
-                const size = sw >= 1280 ? '6rem' : (sw >= 768 ? '5.2rem' : '3rem');
-                h.style.setProperty('font-size', size, 'important');
-            };
-
-            // Apply initially and on viewport changes
-            window.addEventListener('resize', setHeading);
-            window.addEventListener('orientationchange', setHeading);
-            window.addEventListener('load', () => { setTimeout(setHeading, 200); });
-            setHeading();
-
-            // Re-apply if other scripts overwrite the style: MutationObserver + fallback interval
-            (function watchHeading() {
-                const h = document.querySelector('.fv-heading');
-                if (!h) return;
-                const observer = new MutationObserver(() => setHeading());
-                observer.observe(h, { attributes: true, attributeFilter: ['style'] });
-                const intervalId = setInterval(setHeading, 1000);
-                // stop interval after 10s (observer should be sufficient)
-                setTimeout(() => clearInterval(intervalId), 10000);
-            })();
-        })();
-
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.2 });
-        fadeElements.forEach(el => observer.observe(el));
-
-
-    </script>
+  </script>
 </body>
-
 </html>
