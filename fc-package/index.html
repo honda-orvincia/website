@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FC本部構築パッケージ | 株式会社ORVINCIA</title>
+<meta name="description" content="契約書・営業資料・加盟開発の型まで一式で。コンサルでも制作代行でもなく、自らも店舗を運営し、いまもFC本部の現場で手を動かしている実働パートナーが、あなたのFC化を動く資産にします。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#023a91;
+    --navy-d:#012a6b;
+    --gold:#cb9a08;
+    --gold-d:#a67f06;
+    --ink:#33383f;
+    --ink-soft:#6b7280;
+    --iv1:#fcfaf2;
+    --iv2:#faf5e6;
+    --iv3:#fdfaf2;
+    --line:rgba(2,58,145,.12);
+    --gold-line:rgba(203,154,8,.4);
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:"Noto Sans JP",sans-serif;font-weight:500;color:var(--ink);background:#fff;line-height:1.9;font-size:16px;letter-spacing:.03em;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .serif{font-family:"Noto Serif JP",serif}
+
+  /* signature eyebrow: huge faded-gold English + navy serif JP */
+  .eyebrow{margin-bottom:40px;text-align:center;line-height:1}
+  .eyebrow .en{display:block;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(46px,10vw,84px);color:rgba(203,154,8,.28);letter-spacing:.06em;text-transform:capitalize}
+  .eyebrow .jp{display:block;font-family:"Noto Serif JP",serif;font-weight:500;font-size:clamp(24px,5.4vw,38px);color:var(--navy);margin-top:-.15em;letter-spacing:.04em;line-height:1.4}
+  .on-navy .eyebrow .jp{color:#fff}
+  .on-navy .eyebrow .en{color:rgba(231,205,136,.32)}
+  .sub-gold{font-family:"Noto Serif JP",serif;font-weight:500;font-size:clamp(19px,3vw,24px);color:var(--gold);text-align:center;margin-bottom:8px}
+  .sub-gold::before{content:"― "}
+  .sub-gold::after{content:" ―"}
+  .lead{text-align:center;color:var(--ink-soft);max-width:640px;margin:14px auto 0;font-size:15.5px}
+  .on-navy .lead{color:#c8d3ea}
+
+  /* header */
+  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:"Noto Serif JP",serif;font-weight:600;font-size:17px;color:var(--navy);letter-spacing:.06em}
+  .nav-cta{display:inline-block;background:var(--gold);color:#fff;font-weight:500;font-size:13px;padding:11px 24px;border-radius:2em}
+
+  /* pill button (solid gold, white text) */
+  .btn{display:inline-block;background:var(--gold);color:#fff;font-family:"Noto Serif JP",serif;font-weight:500;font-size:17px;padding:17px 46px;border-radius:2em;border:1px solid var(--gold);cursor:pointer;transition:background .2s;letter-spacing:.06em}
+  .btn:hover{background:var(--gold-d);border-color:var(--gold-d)}
+  .btn-line{display:inline-block;color:#fff;font-weight:500;font-size:15px;padding:15px 36px;border-radius:2em;border:1px solid var(--gold-line);letter-spacing:.06em}
+
+  section{padding:80px 0}
+  .bg-iv1{background:var(--iv1)}
+  .bg-iv2{background:var(--iv2)}
+  .bg-navy{background:var(--navy);color:#fff}
+  .sec-head{margin-bottom:52px}
+
+  /* hero */
+  .hero{position:relative;color:#fff;background:linear-gradient(160deg,#012a6b 0%,#023a91 55%,#022255 100%);overflow:hidden;padding:0}
+  .hero .watermark{position:absolute;top:-2%;right:-3%;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:26vw;color:rgba(231,205,136,.06);line-height:.8;pointer-events:none;white-space:nowrap}
+  .hero-inner{position:relative;display:grid;gap:44px;padding:60px 0 70px}
+  .hero .kicker{display:inline-block;font-family:"Cormorant Garamond",serif;font-size:15px;letter-spacing:.2em;color:var(--gold);border-bottom:1px solid var(--gold-line);padding-bottom:6px;margin-bottom:26px}
+  .hero h1{font-family:"Noto Serif JP",serif;font-weight:600;font-size:clamp(23px,5.6vw,48px);line-height:1.5;letter-spacing:.02em}
+  .hero h1 .g{color:#e7cd88}
+  .hero-sub{font-size:clamp(14.5px,2.3vw,16.5px);color:#cdd7ea;margin-top:26px;max-width:600px;line-height:2.1;font-weight:400}
+  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{margin-top:18px;font-size:12.5px;color:#8ea1c6;letter-spacing:.04em}
+  .cred{border:1px solid var(--gold-line);background:rgba(255,255,255,.04);padding:30px 28px}
+  .cred .k{font-family:"Noto Serif JP",serif;font-weight:500;font-size:17px;color:#e7cd88;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(231,205,136,.2)}
+  .cred ul{list-style:none;display:grid;gap:15px}
+  .cred li{position:relative;padding-left:24px;font-size:15px;color:#eaf0fb;font-weight:400}
+  .cred li::before{content:"";position:absolute;left:2px;top:12px;width:7px;height:7px;background:var(--gold);border-radius:50%}
+  .cred .note{margin-top:20px;font-size:12.5px;color:#9fb0d3;line-height:1.8;font-weight:400}
+
+  /* problem */
+  .prob{max-width:780px;margin:0 auto;display:grid;gap:0;background:#fff;border:1px solid var(--line)}
+  .prob li{list-style:none;display:flex;gap:20px;align-items:flex-start;padding:24px 28px;border-bottom:1px solid var(--line);font-size:16px;color:var(--navy);font-weight:500}
+  .prob li:last-child{border-bottom:0}
+  .prob li .n{flex:none;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:26px;color:var(--gold);line-height:1}
+  .prob-close{max-width:780px;margin:34px auto 0;text-align:center;font-family:"Noto Serif JP",serif;font-weight:500;font-size:clamp(17px,2.8vw,22px);color:var(--navy);line-height:1.9}
+  .prob-close b{color:var(--gold)}
+
+  /* why comparison */
+  .cmp{max-width:860px;margin:0 auto;display:grid;gap:0;border:1px solid rgba(255,255,255,.15)}
+  .cmp-row{display:grid;grid-template-columns:1fr;gap:4px;padding:24px 28px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .cmp-row:last-child{border-bottom:0}
+  .cmp-row .who{font-family:"Noto Serif JP",serif;font-weight:500;font-size:15px;color:#a9b8d6}
+  .cmp-row .who i{font-family:"Cormorant Garamond",serif;font-style:normal;color:var(--gold);margin-right:10px;font-size:17px}
+  .cmp-row .gap{color:#dbe3f2;font-size:15px;line-height:1.9;font-weight:400}
+  .cmp-row .gap span{color:#9fb0d3}
+  .cmp-me{background:linear-gradient(120deg,rgba(203,154,8,.16),rgba(203,154,8,.04))}
+  .cmp-me .who{color:#e7cd88}
+  .cmp-me .gap{color:#fff}
+  .facts{max-width:860px;margin:38px auto 0;display:grid;gap:16px}
+  .facts .f{display:flex;gap:15px;align-items:flex-start;color:#dbe3f2;font-size:15px;line-height:2;font-weight:400}
+  .facts .f i{flex:none;color:var(--gold);font-style:normal;margin-top:.1em}
+  .facts b{color:#e7cd88;font-weight:500}
+
+  /* package */
+  .pkg{max-width:760px;margin:0 auto;border:1px solid var(--line);background:#fff}
+  .pkg-head{background:var(--navy);color:#fff;padding:34px 32px;text-align:center;position:relative}
+  .pkg-head .tag{font-family:"Cormorant Garamond",serif;letter-spacing:.18em;font-size:14px;color:#e7cd88;text-transform:uppercase}
+  .pkg-head h3{font-family:"Noto Serif JP",serif;font-weight:500;font-size:23px;margin-top:10px;letter-spacing:.03em}
+  .pkg-head .price{margin-top:16px;font-family:"Noto Serif JP",serif}
+  .pkg-head .price .n{font-size:46px;font-weight:600;color:#e7cd88;letter-spacing:.02em}
+  .pkg-head .price small{font-size:15px;color:#c8d3ea;font-weight:400;margin-left:4px}
+  .pkg-head .rule{width:44px;height:1px;background:var(--gold);margin:16px auto 0}
+  .pkg-body{padding:34px 32px}
+  .pkg-body ul{list-style:none;display:grid;gap:22px}
+  .pkg-body li{padding-left:32px;position:relative}
+  .pkg-body li::before{content:"";position:absolute;left:2px;top:9px;width:14px;height:8px;border-left:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg)}
+  .pkg-body li b{display:block;font-family:"Noto Serif JP",serif;color:var(--navy);font-weight:600;font-size:16.5px}
+  .pkg-body li span{color:var(--ink-soft);font-size:14px;font-weight:400}
+  .legal{margin-top:26px;font-size:12px;color:var(--ink-soft);background:var(--iv2);padding:16px 18px;line-height:1.85;font-weight:400}
+  .opt{max-width:760px;margin:20px auto 0;border:1px solid var(--gold-line);padding:26px 30px;background:#fff}
+  .opt .tag{font-family:"Cormorant Garamond",serif;letter-spacing:.14em;font-size:13px;color:var(--gold);text-transform:uppercase}
+  .opt .r{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-top:8px}
+  .opt h3{font-family:"Noto Serif JP",serif;font-weight:600;font-size:19px;color:var(--navy)}
+  .opt .price{font-family:"Noto Serif JP",serif;font-weight:600;font-size:24px;color:var(--gold)}
+  .opt .price small{font-size:13px;font-weight:400;color:var(--ink-soft)}
+  .opt p{color:var(--ink-soft);font-size:14px;margin-top:10px;font-weight:400}
+
+  /* flow */
+  .flow{max-width:720px;margin:0 auto}
+  .step{display:grid;grid-template-columns:60px 1fr;gap:22px;padding:26px 0;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:0}
+  .step .num{width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;display:flex;align-items:center;justify-content:center}
+  .step .num.free{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .step h3{font-family:"Noto Serif JP",serif;font-weight:600;font-size:18px;color:var(--navy)}
+  .step p{color:var(--ink-soft);font-size:14px;margin-top:6px;font-weight:400}
+
+  /* price */
+  .price-grid{max-width:800px;margin:0 auto;display:grid;gap:16px}
+  .price-card{border:1px solid var(--line);background:#fff;padding:28px 30px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+  .price-card.main{border:1px solid var(--gold)}
+  .price-card .l .t{font-family:"Noto Serif JP",serif;font-weight:600;color:var(--navy);font-size:16.5px}
+  .price-card .l .s{color:var(--ink-soft);font-size:13px;margin-top:3px;font-weight:400}
+  .price-card .p{font-family:"Noto Serif JP",serif;font-weight:600;font-size:30px;color:var(--gold)}
+  .price-card .p small{font-size:13px;font-weight:400;color:var(--ink-soft);margin-left:2px}
+  .price-note{max-width:800px;margin:24px auto 0;color:var(--ink-soft);font-size:13.5px;text-align:center;font-weight:400}
+
+  /* faq */
+  .faq{max-width:760px;margin:0 auto}
+  .faq details{border-bottom:1px solid var(--line);background:transparent}
+  .faq summary{list-style:none;cursor:pointer;padding:24px 52px 24px 34px;position:relative;font-family:"Noto Serif JP",serif;font-weight:500;color:var(--navy);font-size:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::before{content:"Q";position:absolute;left:0;top:24px;font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--gold);font-weight:600}
+  .faq summary::after{content:"+";position:absolute;right:8px;top:50%;transform:translateY(-50%);font-family:"Cormorant Garamond",serif;font-size:26px;color:var(--gold)}
+  .faq details[open] summary::after{content:"–"}
+  .faq .a{padding:0 8px 26px 34px;color:var(--ink-soft);font-size:14.5px;line-height:2;font-weight:400}
+
+  /* disclaimer */
+  .disc{max-width:800px;margin:0 auto;background:var(--iv1);padding:28px 28px}
+  .disc h3{font-family:"Noto Serif JP",serif;font-weight:600;font-size:15px;color:var(--navy);margin-bottom:14px}
+  .disc ul{list-style:none;display:grid;gap:11px}
+  .disc li{font-size:12.5px;color:var(--ink-soft);padding-left:18px;position:relative;line-height:1.85;font-weight:400}
+  .disc li::before{content:"※";position:absolute;left:0;color:var(--gold)}
+
+  /* cta */
+  .cta-head{text-align:center;max-width:640px;margin:0 auto 34px}
+  form{max-width:520px;margin:0 auto;display:grid;gap:17px}
+  .field label{display:block;font-size:12.5px;font-weight:500;color:#dbe3f2;margin-bottom:8px;letter-spacing:.05em}
+  .field input,.field textarea{width:100%;font-family:inherit;font-size:16px;color:var(--ink);background:#fff;border:0;padding:15px 16px}
+  .field textarea{min-height:120px;resize:vertical}
+  form .btn{width:100%;margin-top:8px}
+  .cta-note{margin-top:14px;font-size:12px;color:#8ea1c6;line-height:1.8;text-align:center;font-weight:400}
+
+  /* footer */
+  footer{background:#012a6b;color:#9fb0d3;padding:44px 0}
+  .foot{display:grid;gap:9px;text-align:center}
+  .foot .c{font-family:"Noto Serif JP",serif;font-weight:500;color:#fff;font-size:17px;letter-spacing:.06em}
+  .foot .m{font-size:13px;font-weight:400}
+  .foot .a{font-size:11.5px;color:#6c7fa3;margin-top:6px;font-weight:400}
+
+  @media(max-width:600px){
+    .wrap{padding:0 30px}
+    .hero-inner{padding:48px 0 56px}
+    .hero .kicker{font-size:13px;letter-spacing:.16em}
+    .hero-sub{line-height:2}
+    .sec-head{margin-bottom:40px}
+    section{padding:64px 0}
+  }
+  @media(min-width:860px){
+    section{padding:110px 0}
+    .hero-inner{grid-template-columns:1.12fr .88fr;align-items:center;padding:96px 0 104px}
+    .cmp-row{grid-template-columns:210px 1fr;align-items:center;gap:24px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="/" class="logo">株式会社ORVINCIA</a>
+    <a href="#contact" class="nav-cta">無料相談</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="watermark">FC</div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="kicker">Franchise HQ Package</span>
+      <h1>契約書も、営業資料も、加盟開発の型も。<br><span class="g">FC化に必要なものを、一式で。</span></h1>
+      <p class="hero-sub">コンサルでも制作代行でもありません。自らも店舗を運営し、いまもFC本部の現場に入って、加盟開発・契約書設計・既存店の立て直しまで自分の手で動かしている実働パートナーが、あなたのFC化を「動く形」にします。</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn">無料で相談する</a>
+        <a href="#package" class="btn-line">パッケージを見る</a>
+      </div>
+      <p class="hero-note">相談は無料。まず現状を伺い、FC化に必要な順番を整理します。</p>
+    </div>
+    <div class="cred">
+      <div class="k">机上ではなく、いまも現場で。</div>
+      <ul>
+        <li>加盟契約書の設計</li>
+        <li>加盟開発(ターゲット設計・面談フロー)</li>
+        <li>SV(店舗支援)・運営指導</li>
+        <li>既存加盟店の立て直し</li>
+      </ul>
+      <p class="note">多店舗展開するリラクゼーション業態のFC本部を、実働パートナーとして支援中。自らも店舗を運営し、現場の数字を持っています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ISSUE -->
+<section class="bg-iv1">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="en">Issue</span><span class="jp">こんな状態で、止まっていませんか</span></div>
+    </div>
+    <ul class="prob">
+      <li><span class="n">01</span><div>「暖簾分けしてほしい」「同じ店を出したい」と言われ始めたが、契約書もロイヤリティ設計もなく、話だけが先行している</div></li>
+      <li><span class="n">02</span><div>FC加盟店の募集は始めたのに、資料が素人っぽく、問い合わせが来ない・成約しない</div></li>
+      <li><span class="n">03</span><div>加盟開発の「型」がなく、誰に何をどう訴求すれば加盟が動くのか分からない</div></li>
+      <li><span class="n">04</span><div>契約書はネットの雛形を流用したまま。後で揉めたときが不安</div></li>
+      <li><span class="n">05</span><div>加盟店は増えたが、SV・マニュアルなど本部機能が追いつかず、既存の加盟店が離れ始めている</div></li>
+    </ul>
+    <p class="prob-close">やりたい、あるいは既にやっている。<br>足りないのは熱意ではなく、<b>再現できる「型」</b>です。</p>
+  </div>
+</section>
+
+<!-- REASON -->
+<section class="bg-navy on-navy">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="en">Reason</span><span class="jp">なぜ、私が作ると違うのか</span></div>
+      <p class="lead">資料作成代行・LP制作会社・FCコンサル。それぞれに、埋められない穴があります。</p>
+    </div>
+    <div class="cmp">
+      <div class="cmp-row"><div class="who"><i>01</i>資料作成代行</div><div class="gap">見た目のきれいな資料は作れる。<span>だがロイヤリティ率・テリトリー・加盟条件・SV設計といった“中身”は空欄のまま。</span></div></div>
+      <div class="cmp-row"><div class="who"><i>02</i>LP制作会社</div><div class="gap">制作して納品、以上。<span>誰に何を訴求すれば加盟が動くかを知らないので、きれいでも刺さらない。</span></div></div>
+      <div class="cmp-row"><div class="who"><i>03</i>FCコンサル</div><div class="gap">助言とレポートで終わる。<span>自分では今、店もFC本部の現場も持っていないことが多く、絵に描いた餅になりやすい。</span></div></div>
+      <div class="cmp-row cmp-me"><div class="who"><i>◆</i>私(ORVINCIA)</div><div class="gap">店舗運営の現場も、FC本部の実働支援も、いま自分の手でやっている。渡すものは全部、いまの現場で実際に動いているものです。</div></div>
+    </div>
+    <div class="facts">
+      <div class="f"><i>◆</i><div>いまも、多店舗展開するリラクゼーション業態のFC本部を実働パートナーとして支援。加盟契約書の設計・加盟開発・SV・既存加盟店の立て直しまで、現場で担当している。</div></div>
+      <div class="f"><i>◆</i><div>自らも店舗を運営し、現場のオペレーションと数字を自分で持っている。</div></div>
+      <div class="f"><i>◆</i><div>前職では、教育ベンチャーのFC本部責任者として、FC本部の0→1構築を実務でリード。</div></div>
+      <div class="f"><i>◆</i><div>フィットネス・リラクゼーション・教育など、複数の業種でFC本部の構築・立ち上げに携わってきた。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGE -->
+<section id="package">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="en">Package</span><span class="jp">FC展開に必要な資産を、一式で</span></div>
+      <p class="lead">単品の資料ではなく、加盟が取れて、加盟後も回る本部の“型”をまとめて渡します。</p>
+    </div>
+    <div class="pkg">
+      <div class="pkg-head">
+        <div class="tag">Main Package</div>
+        <h3>営業資料＋契約書＋一式パッケージ</h3>
+        <div class="price"><span class="n">500,000</span><small>円(税別)</small></div>
+        <div class="rule"></div>
+      </div>
+      <div class="pkg-body">
+        <ul>
+          <li><b>加盟店募集用の営業資料一式</b><span>共感するオーナー候補に届く、FCパッケージ資料。訴求の順番から設計します。</span></li>
+          <li><b>加盟契約書ドラフト</b><span>加盟条件・重要事項を整理した契約書の雛形。締結前提の骨子まで。</span></li>
+          <li><b>フランチャイズとして“売れる”訴求設計</b><span>あなたのビジネスモデルを深く伺い、それを「加盟したい」と思わせる強み・訴求・言葉にゼロから落とし込みます。単なる資料作成ではなく、事業を“売れる形”にすること——ここがこのパッケージの核です。</span></li>
+          <li><b>ロイヤリティ・加盟条件の設計</b><span>加盟金・ロイヤリティの根拠づくり。加盟店も本部も続く水準に。</span></li>
+          <li><b>売れるLP制作(加盟店募集LP)</b><span>共感するオーナー候補を集める募集LP。この一式に含まれます。</span></li>
+        </ul>
+        <p class="legal">契約書に関する提供は、雛形の提供および事業設計の助言であり、個別の法律判断・法律事務は行いません。締結前に弁護士によるリーガルチェックを推奨します。</p>
+      </div>
+    </div>
+    <div class="opt">
+      <div class="tag">LP Only</div>
+      <div class="r">
+        <h3>売れるLP制作(単体)</h3>
+        <div class="price">300,000円 <small>(税別)</small></div>
+      </div>
+      <p>上記の一式パッケージには、このLP制作が含まれます。加盟店募集のLPだけを単体で依頼したい場合の料金です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="bg-iv2">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="en">Flow</span><span class="jp">納品までの流れ</span></div>
+    </div>
+    <div class="flow">
+      <div class="step"><div class="num free">0</div><div><h3>無料相談</h3><p>現状とやりたいことを伺い、FC化に必要な順番を整理します。ここまでは無料です。</p></div></div>
+      <div class="step"><div class="num">1</div><div><h3>ヒアリング</h3><p>業態・店舗の状況・数字を伺い、設計の前提を固めます。</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3>設計・ドラフト作成</h3><p>契約書・営業資料・加盟開発の型を、あなたの業態に合わせて作成します。</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3>すり合わせ・修正</h3><p>実際に使う立場で確認いただき、現場で回る形に調整します。</p></div></div>
+      <div class="step"><div class="num">4</div><div><h3>納品</h3><p>一式をお渡しします。標準納期は <b style="color:var(--navy)">1〜2ヶ月</b>(内容により前後します)。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="en">Price</span><span class="jp">料金</span></div>
+    </div>
+    <div class="price-grid">
+      <div class="price-card main">
+        <div class="l"><div class="t">一式パッケージ(LP制作を含む)</div><div class="s">ビジネスモデルの訴求設計＋営業資料＋契約書＋LP制作</div></div>
+        <div class="p">500,000<small>円(税別)</small></div>
+      </div>
+      <div class="price-card">
+        <div class="l"><div class="t">LP制作のみ(単体)</div><div class="s">加盟店募集のLPだけを依頼する場合</div></div>
+        <div class="p">300,000<small>円(税別)</small></div>
+      </div>
+    </div>
+    <p class="price-note">一式パッケージにはLP制作が含まれます。まずは無料相談で、あなたの業態に必要な範囲と進め方をご提案します。いきなり契約は必要ありません。</p>
+    <div style="text-align:center;margin-top:32px"><a href="#contact" class="btn">無料で相談する</a></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-iv1">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="en">Faq</span><span class="jp">よくあるご質問</span></div>
+    </div>
+    <div class="faq">
+      <details><summary>まだ1店舗ですが、相談できますか。</summary><div class="a">はい。これからFC化する段階の相談が中心です。「言われ始めたが何もない」状態からの設計を得意としています。</div></details>
+      <details><summary>提供された契約書は、そのまま使えますか。</summary><div class="a">雛形の提供および事業設計の助言としてお渡しします。個別の法律判断・法律事務は行いません。締結前に弁護士によるリーガルチェックを受けることを推奨します。</div></details>
+      <details><summary>コンサルとは何が違いますか。</summary><div class="a">私は評論や助言で終わりません。自分でも店舗を運営し、いまもFC本部の現場に入って加盟開発や既存店支援を自分の手で行っています。渡すのは、現場で実際に動いているものです。</div></details>
+      <details><summary>業種は問いませんか。</summary><div class="a">リラクゼーション・フィットネス・教育など複数業種でFC本部の構築に携わってきました。業態を伺ったうえで、その業態に合わせて設計します。</div></details>
+      <details><summary>遠方でも依頼できますか。</summary><div class="a">オンラインで対応します。相談から納品まで、来社は必須ではありません。</div></details>
+      <details><summary>どのくらいの期間で納品されますか。</summary><div class="a">標準で1〜2ヶ月を目安としています。範囲や状況により前後しますので、無料相談時に目安をお伝えします。</div></details>
+      <details><summary>費用はいくらですか。</summary><div class="a">一式パッケージが500,000円(税別)で、加盟店募集のLP制作もこの中に含まれます。LPだけを単体で依頼する場合は300,000円(税別)です。まずは無料相談で、必要な範囲をご提案します。</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<section>
+  <div class="wrap">
+    <div class="disc">
+      <h3>ご確認ください</h3>
+      <ul>
+        <li>契約書関連の提供は、雛形の提供および事業設計の助言であり、個別の法律判断・法律事務は行いません。締結前に弁護士によるリーガルチェックを推奨します。</li>
+        <li>本サービスは、事業設計と資産作成の支援です。加盟店数・売上などの成果を保証するものではありません。</li>
+        <li>提供物の効果は、業態・立地・運営体制など個別の条件により異なります。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="bg-navy on-navy">
+  <div class="wrap">
+    <div class="cta-head">
+      <div class="eyebrow"><span class="en">Contact</span><span class="jp">まずは、現状を聞かせてください。</span></div>
+      <p class="lead">FC化のどこで止まっているか。相談は無料です。伺ったうえで、必要な順番と進め方をお伝えします。</p>
+    </div>
+    <form action="https://formspree.io/f/mkoplpod" method="POST">
+      <input type="hidden" name="_subject" value="【LP】FC本部構築パッケージ 無料相談">
+      <input type="hidden" name="source" value="fc-package-lp">
+      <div class="field"><label for="name">お名前</label><input id="name" type="text" name="name" placeholder="山田 太郎" required></div>
+      <div class="field"><label for="company">会社名 / 屋号</label><input id="company" type="text" name="company" placeholder="株式会社〇〇"></div>
+      <div class="field"><label for="email">メールアドレス</label><input id="email" type="email" name="email" placeholder="you@example.com" required></div>
+      <div class="field"><label for="message">ご相談内容</label><textarea id="message" name="message" placeholder="現在の店舗数、FC化の状況、今困っていることなどをお聞かせください" required></textarea></div>
+      <button type="submit" class="btn">無料相談を申し込む</button>
+      <p class="cta-note">ご入力いただいた内容は、ご相談対応のためにのみ使用します。営業目的の一方的な連絡には利用しません。</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="c">株式会社ORVINCIA</div>
+    <div class="m">理念継承型のFC本部構築・運営支援</div>
+    <div class="a">東京都渋谷区道玄坂1丁目10-8 渋谷道玄坂東急ビル 2F-C ／ ©2026 ORVINCIA Co., Ltd.</div>
+  </div>
+</footer>
+
+</body>
+</html>
