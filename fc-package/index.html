@@ -63,8 +63,8 @@
   /* hero */
   .hero{position:relative;color:#fff;background:linear-gradient(160deg,#012a6b 0%,#023a91 55%,#022255 100%);overflow:hidden;padding:0}
   .hero .watermark{position:absolute;top:-2%;right:-3%;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:26vw;color:rgba(231,205,136,.06);line-height:.8;pointer-events:none;white-space:nowrap}
-  .hero-inner{position:relative;display:grid;gap:44px;padding:60px 0 70px}
-  .hero .kicker{display:inline-block;font-family:"Cormorant Garamond",serif;font-size:15px;letter-spacing:.2em;color:var(--gold);border-bottom:1px solid var(--gold-line);padding-bottom:6px;margin-bottom:26px}
+  .hero-inner{position:relative;display:grid;gap:44px;padding:60px 24px 70px}
+  .hero .kicker{display:inline-block;font-family:"Noto Sans JP",sans-serif;font-weight:500;font-size:14px;letter-spacing:.12em;color:var(--gold);border-bottom:1px solid var(--gold-line);padding-bottom:7px;margin-bottom:26px}
   .hero h1{font-family:"Noto Serif JP",serif;font-weight:600;font-size:clamp(23px,5.6vw,48px);line-height:1.5;letter-spacing:.02em}
   .hero h1 .g{color:#e7cd88}
   .hero-sub{font-size:clamp(14.5px,2.3vw,16.5px);color:#cdd7ea;margin-top:26px;max-width:600px;line-height:2.1;font-weight:400}
@@ -179,15 +179,15 @@
 
   @media(max-width:600px){
     .wrap{padding:0 30px}
-    .hero-inner{padding:48px 0 56px}
-    .hero .kicker{font-size:13px;letter-spacing:.16em}
+    .hero-inner{padding:48px 30px 56px}
+    .hero .kicker{font-size:12.5px;letter-spacing:.1em}
     .hero-sub{line-height:2}
     .sec-head{margin-bottom:40px}
     section{padding:64px 0}
   }
   @media(min-width:860px){
     section{padding:110px 0}
-    .hero-inner{grid-template-columns:1.12fr .88fr;align-items:center;padding:96px 0 104px}
+    .hero-inner{grid-template-columns:1.12fr .88fr;align-items:center;padding:96px 24px 104px}
     .cmp-row{grid-template-columns:210px 1fr;align-items:center;gap:24px}
   }
 </style>
@@ -203,10 +203,9 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="watermark">FC</div>
   <div class="wrap hero-inner">
     <div>
-      <span class="kicker">Franchise HQ Package</span>
+      <span class="kicker">FC本部構築パッケージ</span>
       <h1>契約書も、営業資料も、加盟開発の型も。<br><span class="g">FC化に必要なものを、一式で。</span></h1>
       <p class="hero-sub">コンサルでも制作代行でもありません。自らも店舗を運営し、いまもFC本部の現場に入って、加盟開発・契約書設計・既存店の立て直しまで自分の手で動かしている実働パートナーが、あなたのFC化を「動く形」にします。</p>
       <div class="hero-cta">
@@ -232,7 +231,7 @@
 <section class="bg-iv1">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow"><span class="en">Issue</span><span class="jp">こんな状態で、止まっていませんか</span></div>
+      <div class="eyebrow"><span class="jp">こんな状態で、止まっていませんか</span></div>
     </div>
     <ul class="prob">
       <li><span class="n">01</span><div>「暖簾分けしてほしい」「同じ店を出したい」と言われ始めたが、契約書もロイヤリティ設計もなく、話だけが先行している</div></li>
@@ -249,7 +248,7 @@
 <section class="bg-navy on-navy">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow"><span class="en">Reason</span><span class="jp">なぜ、私が作ると違うのか</span></div>
+      <div class="eyebrow"><span class="jp">なぜ、私が作ると違うのか</span></div>
       <p class="lead">資料作成代行・LP制作会社・FCコンサル。それぞれに、埋められない穴があります。</p>
     </div>
     <div class="cmp">
@@ -271,12 +270,12 @@
 <section id="package">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow"><span class="en">Package</span><span class="jp">FC展開に必要な資産を、一式で</span></div>
+      <div class="eyebrow"><span class="jp">FC展開に必要な資産を、一式で</span></div>
       <p class="lead">単品の資料ではなく、加盟が取れて、加盟後も回る本部の“型”をまとめて渡します。</p>
     </div>
     <div class="pkg">
       <div class="pkg-head">
-        <div class="tag">Main Package</div>
+        <div class="tag">一式パッケージ</div>
         <h3>営業資料＋契約書＋一式パッケージ</h3>
         <div class="price"><span class="n">500,000</span><small>円(税別)</small></div>
         <div class="rule"></div>
@@ -293,7 +292,7 @@
       </div>
     </div>
     <div class="opt">
-      <div class="tag">LP Only</div>
+      <div class="tag">LP制作のみ</div>
       <div class="r">
         <h3>売れるLP制作(単体)</h3>
         <div class="price">300,000円 <small>(税別)</small></div>
@@ -307,7 +306,7 @@
 <section class="bg-iv2">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow"><span class="en">Flow</span><span class="jp">納品までの流れ</span></div>
+      <div class="eyebrow"><span class="jp">納品までの流れ</span></div>
     </div>
     <div class="flow">
       <div class="step"><div class="num free">0</div><div><h3>無料相談</h3><p>現状とやりたいことを伺い、FC化に必要な順番を整理します。ここまでは無料です。</p></div></div>
@@ -323,7 +322,7 @@
 <section>
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow"><span class="en">Price</span><span class="jp">料金</span></div>
+      <div class="eyebrow"><span class="jp">料金</span></div>
     </div>
     <div class="price-grid">
       <div class="price-card main">
@@ -344,7 +343,7 @@
 <section class="bg-iv1">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow"><span class="en">Faq</span><span class="jp">よくあるご質問</span></div>
+      <div class="eyebrow"><span class="jp">よくあるご質問</span></div>
     </div>
     <div class="faq">
       <details><summary>まだ1店舗ですが、相談できますか。</summary><div class="a">はい。これからFC化する段階の相談が中心です。「言われ始めたが何もない」状態からの設計を得意としています。</div></details>
@@ -376,7 +375,7 @@
 <section id="contact" class="bg-navy on-navy">
   <div class="wrap">
     <div class="cta-head">
-      <div class="eyebrow"><span class="en">Contact</span><span class="jp">まずは、現状を聞かせてください。</span></div>
+      <div class="eyebrow"><span class="jp">まずは、現状を聞かせてください。</span></div>
       <p class="lead">FC化のどこで止まっているか。相談は無料です。伺ったうえで、必要な順番と進め方をお伝えします。</p>
     </div>
     <form action="https://formspree.io/f/mkoplpod" method="POST">
