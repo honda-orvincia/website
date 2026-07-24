@@ -45,9 +45,14 @@
 
   /* header */
   header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .logo{font-family:"Noto Serif JP",serif;font-weight:600;font-size:17px;color:var(--navy);letter-spacing:.06em}
-  .nav-cta{display:inline-block;background:var(--gold);color:#fff;font-weight:500;font-size:13px;padding:11px 24px;border-radius:2em}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
+  .logo{font-family:"Noto Serif JP",serif;font-weight:600;font-size:17px;color:var(--navy);letter-spacing:.06em;transition:opacity .2s}
+  .logo:hover{opacity:.65}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .nav-home{font-size:13px;font-weight:500;color:var(--ink-soft);letter-spacing:.04em;white-space:nowrap;transition:color .2s}
+  .nav-home:hover{color:var(--gold)}
+  .nav-home::before{content:"\2190";margin-right:5px}
+  .nav-cta{display:inline-block;background:var(--gold);color:#fff;font-weight:500;font-size:13px;padding:11px 24px;border-radius:2em;white-space:nowrap}
 
   /* pill button (solid gold, white text) */
   .btn{display:inline-block;background:var(--gold);color:#fff;font-family:"Noto Serif JP",serif;font-weight:500;font-size:17px;padding:17px 46px;border-radius:2em;border:1px solid var(--gold);cursor:pointer;transition:background .2s;letter-spacing:.06em}
@@ -176,11 +181,18 @@
   .foot .c{font-family:"Noto Serif JP",serif;font-weight:500;color:#fff;font-size:17px;letter-spacing:.06em}
   .foot .m{font-size:13px;font-weight:400}
   .foot .a{font-size:11.5px;color:#6c7fa3;margin-top:6px;font-weight:400}
+  .foot-home{justify-self:center;margin-top:22px;display:inline-block;color:#fff;font-family:"Noto Serif JP",serif;font-weight:500;font-size:14px;letter-spacing:.06em;padding:13px 34px;border:1px solid var(--gold-line);border-radius:2em;transition:background .2s,border-color .2s}
+  .foot-home:hover{background:var(--gold);border-color:var(--gold)}
+  .foot-home::before{content:"\2190";margin-right:8px}
 
   @media(max-width:600px){
     .wrap{padding:0 30px}
     .hero-inner{padding:48px 30px 56px}
     .hero .kicker{font-size:12.5px;letter-spacing:.1em}
+    .logo{font-size:14.5px;letter-spacing:.03em}
+    .nav-right{gap:10px}
+    .nav-home{font-size:12px}
+    .nav-cta{font-size:12px;padding:10px 18px}
     .hero-sub{line-height:2}
     .sec-head{margin-bottom:40px}
     section{padding:64px 0}
@@ -197,7 +209,10 @@
 <header>
   <div class="wrap nav">
     <a href="/" class="logo">株式会社ORVINCIA</a>
-    <a href="#contact" class="nav-cta">無料相談</a>
+    <div class="nav-right">
+      <a href="/" class="nav-home">トップへ</a>
+      <a href="#contact" class="nav-cta">無料相談</a>
+    </div>
   </div>
 </header>
 
@@ -396,6 +411,7 @@
     <div class="c">株式会社ORVINCIA</div>
     <div class="m">理念継承型のFC本部構築・運営支援</div>
     <div class="a">東京都渋谷区道玄坂1丁目10-8 渋谷道玄坂東急ビル 2F-C ／ ©2026 ORVINCIA Co., Ltd.</div>
+    <a href="/" class="foot-home">トップページへ戻る</a>
   </div>
 </footer>
 
