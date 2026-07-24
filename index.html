@@ -97,6 +97,10 @@
       color: var(--blue);
     }
 
+    .nav-group-label { display: none; }
+
+    .nav-service { color: var(--blue); font-weight: 700; }
+
     .header-cta {
       display: inline-flex;
       align-items: center;
@@ -109,6 +113,32 @@
       font-weight: 700;
       box-shadow: 0 16px 42px rgba(37, 99, 235, 0.18);
     }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 34px;
+      height: 34px;
+      padding: 5px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     main {
       overflow: hidden;
@@ -528,13 +558,63 @@
 
     @media (max-width: 720px) {
       .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
       }
 
+      .hamburger { display: flex; }
+
+      .header-cta { display: none; }
+
       .nav-links {
-        gap: 16px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: #ffffff;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 22px 44px rgba(15, 23, 42, 0.10);
+        padding: 4px 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.3s ease, opacity 0.25s ease;
       }
+
+      .nav-links.open {
+        max-height: 470px;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav-links a {
+        padding: 15px 24px;
+        border-top: 1px solid var(--border);
+      }
+
+      .nav-links a:first-child { border-top: none; }
+
+      .nav-group-label {
+        display: block;
+        padding: 15px 24px 4px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: #94a3b8;
+      }
+
+      .nav-links a.nav-service {
+        border-top: none;
+        padding-top: 4px;
+        color: var(--blue);
+      }
+
+      .nav-links a.nav-service::after { content: " →"; }
 
       .fv-title {
         font-size: 3.4rem;
@@ -547,11 +627,14 @@
   <header>
     <div class="page-width header-inner">
       <button class="logo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">株式会社ORVINCIA</button>
-      <nav class="nav-links">
-        <a href="#services">事業内容</a>
-        <a href="#rep">代表について</a>
-        <a href="#company">会社概要</a>
-        <a href="#contact">お問い合わせ</a>
+      <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      <nav class="nav-links" id="navLinks">
+        <span class="nav-group-label">提供サービス</span>
+        <a href="/fc-package/" class="nav-service">FCパッケージ制作</a>
+        <a href="#services" onclick="closeMenu()">事業内容</a>
+        <a href="#rep" onclick="closeMenu()">代表について</a>
+        <a href="#company" onclick="closeMenu()">会社概要</a>
+        <a href="#contact" onclick="closeMenu()">お問い合わせ</a>
       </nav>
       <a href="#contact" class="header-cta">お問い合わせ</a>
     </div>
@@ -638,6 +721,17 @@
       </div>
     </section>
 
+    <section class="page-width fade-in" style="margin-top:4px">
+      <div style="background:linear-gradient(135deg,#eff4ff,#f8fafc);border:1px solid rgba(37,99,235,0.14);border-radius:24px;padding:44px 40px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+        <div style="max-width:640px">
+          <p class="section-title">FC本部構築パッケージ</p>
+          <h2 class="section-headline" style="font-size:clamp(1.6rem,3vw,2.3rem);margin-bottom:12px">契約書・営業資料・加盟開発まで、一式で。</h2>
+          <p style="color:#475569;margin:0;line-height:1.9">あなたのビジネスモデルを「フランチャイズとして売れる形」にする一式パッケージ。料金と提供内容をまとめました。</p>
+        </div>
+        <a href="/fc-package/" style="display:inline-block;background:#2563eb;color:#fff;font-weight:700;border-radius:999px;padding:16px 34px;text-decoration:none;white-space:nowrap;font-size:1rem">パッケージを見る</a>
+      </div>
+    </section>
+
     <section id="rep" class="page-width rep-section">
       <div class="fade-in">
         <p class="section-title">代表について</p>
@@ -708,6 +802,19 @@
   <div id="modal-container"></div>
 
   <script>
+    function toggleMenu() {
+      var h = document.getElementById('hamburger');
+      var n = document.getElementById('navLinks');
+      var open = n.classList.toggle('open');
+      h.classList.toggle('open');
+      h.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    function closeMenu() {
+      document.getElementById('navLinks').classList.remove('open');
+      var h = document.getElementById('hamburger');
+      h.classList.remove('open');
+      h.setAttribute('aria-expanded', 'false');
+    }
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
       header.style.boxShadow = window.scrollY > 18 ? '0 12px 30px rgba(15, 23, 42, 0.08)' : 'none';
