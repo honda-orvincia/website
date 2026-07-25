@@ -451,6 +451,47 @@
       line-height: 1.95;
     }
 
+    /* ===== services band ===== */
+    .svc-band { background: var(--navy-d); color: #fff; padding: 84px 0; }
+    .svc-band .sec-head { text-align: center; margin-bottom: 44px; }
+    .svc-band .section-title { color: var(--gold-light); }
+    .svc-band .section-headline { color: #fff; }
+    .svc-grid { display: grid; gap: 20px; max-width: 920px; margin: 0 auto; }
+    .svc-card {
+      background: #fff;
+      border: 1px solid var(--gold-line-soft);
+      padding: 34px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .svc-card .k {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .svc-card h3 {
+      margin: 0 0 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      width: 100%;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--navy);
+    }
+    .svc-card p {
+      margin: 0 0 26px;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      line-height: 1.95;
+      flex: 1;
+    }
+    @media (min-width: 760px) {
+      .svc-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     /* ===== rep / cards ===== */
     .rep-grid {
       display: grid;
@@ -785,7 +826,8 @@
       <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
       <nav class="nav-links" id="navLinks">
         <span class="nav-group-label">提供サービス</span>
-        <a href="/fc-package/" class="nav-service">FCパッケージ制作</a>
+        <a href="/fc-package/" class="nav-service">FC本部構築パッケージ</a>
+        <a href="/fc-support/" class="nav-service">FC本部運営支援</a>
         <a href="#services" onclick="closeMenu()">事業内容</a>
         <a href="#rep" onclick="closeMenu()">代表について</a>
         <a href="#company" onclick="closeMenu()">会社概要</a>
@@ -865,14 +907,26 @@
       </div>
     </section>
 
-    <section class="cta-band">
-      <div class="page-width cta-band-inner fade-in">
-        <div>
-          <span class="section-title">FC本部構築パッケージ</span>
-          <p class="t">契約書・営業資料・加盟開発まで、<span class="g">一式で。</span></p>
-          <p class="d">あなたのビジネスモデルを「フランチャイズとして売れる形」にする一式パッケージ。料金と提供内容をまとめました。</p>
+    <section class="svc-band">
+      <div class="page-width">
+        <div class="fade-in sec-head">
+          <span class="section-title">提供サービス</span>
+          <h2 class="section-headline">「作る」と「回す」、どちらからでも。</h2>
         </div>
-        <a href="/fc-package/" class="btn-gold">パッケージを見る</a>
+        <div class="svc-grid fade-in">
+          <div class="svc-card">
+            <span class="k">作る</span>
+            <h3>FC本部構築パッケージ</h3>
+            <p>契約書・営業資料・加盟開発の型・募集LPを一式で。これからFC化する、加盟店募集を始める段階の方へ。</p>
+            <a href="/fc-package/" class="btn-gold">構築パッケージを見る</a>
+          </div>
+          <div class="svc-card">
+            <span class="k">回す</span>
+            <h3>FC本部運営支援</h3>
+            <p>加盟開発・SV・既存加盟店の立て直しまで、本部の現場に実働で入る継続支援。加盟が増えた後を回したい方へ。</p>
+            <a href="/fc-support/" class="btn-gold">運営支援を見る</a>
+          </div>
+        </div>
       </div>
     </section>
 
