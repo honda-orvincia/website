@@ -53,6 +53,8 @@
   .nav-home:hover{color:var(--gold)}
   .nav-home::before{content:"\2190";margin-right:5px}
   .nav-cta{display:inline-block;background:var(--gold);color:#fff;font-weight:500;font-size:13px;padding:11px 24px;border-radius:2em;white-space:nowrap}
+  .nav-menu{display:none}
+  section[id]{scroll-margin-top:78px}
 
   /* pill button (solid gold, white text) */
   .btn{display:inline-block;background:var(--gold);color:#fff;font-family:"Noto Serif JP",serif;font-weight:500;font-size:17px;padding:17px 46px;border-radius:2em;border:1px solid var(--gold);cursor:pointer;transition:background .2s;letter-spacing:.06em}
@@ -201,6 +203,9 @@
     section{padding:110px 0}
     .hero-inner{grid-template-columns:1.12fr .88fr;align-items:center;padding:96px 24px 104px}
     .cmp-row{grid-template-columns:210px 1fr;align-items:center;gap:24px}
+    .nav-menu{display:flex;gap:26px;align-items:center}
+    .nav-menu a{font-size:13.5px;font-weight:500;color:var(--ink);letter-spacing:.04em;transition:color .2s}
+    .nav-menu a:hover{color:var(--gold)}
   }
 </style>
 </head>
@@ -209,6 +214,12 @@
 <header>
   <div class="wrap nav">
     <a href="/" class="logo">株式会社ORVINCIA</a>
+    <nav class="nav-menu">
+      <a href="#menu">支援内容</a>
+      <a href="#flow">進め方</a>
+      <a href="#price">料金</a>
+      <a href="#faq">Q&amp;A</a>
+    </nav>
     <div class="nav-right">
       <a href="/" class="nav-home">トップへ</a>
       <a href="#contact" class="nav-cta">無料相談</a>
@@ -329,7 +340,7 @@
 </section>
 
 <!-- FLOW -->
-<section class="bg-iv2">
+<section class="bg-iv2" id="flow">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow"><span class="jp">支援の進め方</span></div>
@@ -345,7 +356,7 @@
 </section>
 
 <!-- PRICE -->
-<section>
+<section id="price">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow"><span class="jp">料金</span></div>
@@ -362,7 +373,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="bg-iv1">
+<section class="bg-iv1" id="faq">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow"><span class="jp">よくあるご質問</span></div>
