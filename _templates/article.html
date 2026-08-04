@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!--
+  記事テンプレート。使い方はリポジトリ直下の CLAUDE.md を参照。
+  置換プレースホルダ:
+    {{TITLE}}        記事タイトル(32文字前後、対策KWを前方に)
+    {{DESCRIPTION}}  meta description(100〜120文字、KW含む)
+    {{SLUG}}         URLスラッグ(英小文字とハイフン。例: fc-ka-hiyou)
+    {{TAG}}          カテゴリ表示名(例: 費用・相場 / 契約・法務 / 加盟開発 / 本部運営)
+    {{DATE}}         公開日 YYYY-MM-DD
+    {{DATE_JP}}      公開日表示 YYYY年M月D日
+    {{LEAD}}         リード文(2〜3文。誰のどんな疑問に答えるか)
+    {{BODY}}         本文HTML(h2/h3/p/ul/table/.field-note/.point-box を使用)
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{TITLE}} | ORVINCIA FC本部構築ガイド</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <link rel="canonical" href="https://orvincia.com/guide/{{SLUG}}/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:url" content="https://orvincia.com/guide/{{SLUG}}/">
+  <meta property="og:site_name" content="株式会社ORVINCIA">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/guide/guide.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{TITLE}}",
+    "description": "{{DESCRIPTION}}",
+    "datePublished": "{{DATE}}",
+    "dateModified": "{{DATE}}",
+    "inLanguage": "ja",
+    "mainEntityOfPage": "https://orvincia.com/guide/{{SLUG}}/",
+    "author": {
+      "@type": "Person",
+      "name": "本多 亮也",
+      "jobTitle": "代表取締役",
+      "worksFor": { "@type": "Organization", "name": "株式会社ORVINCIA" }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "株式会社ORVINCIA",
+      "url": "https://orvincia.com/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://orvincia.com/" },
+      { "@type": "ListItem", "position": 2, "name": "FC本部構築ガイド", "item": "https://orvincia.com/guide/" },
+      { "@type": "ListItem", "position": 3, "name": "{{TITLE}}" }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="page-width header-inner">
+      <a href="/" class="logo">株式会社ORVINCIA</a>
+      <nav class="nav-links">
+        <a href="/fc-package/">FC本部構築パッケージ</a>
+        <a href="/fc-support/">FC本部運営支援</a>
+        <a href="/guide/">ガイド</a>
+        <a href="/#contact">お問い合わせ</a>
+      </nav>
+      <a href="/#contact" class="header-cta">無料相談</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="article-width article-head">
+      <nav class="breadcrumb"><a href="/">ホーム</a> › <a href="/guide/">FC本部構築ガイド</a> › {{TITLE}}</nav>
+      <div class="meta">
+        <span class="tag">{{TAG}}</span>
+        <time datetime="{{DATE}}">{{DATE_JP}}</time>
+      </div>
+      <h1>{{TITLE}}</h1>
+      <p class="lead">{{LEAD}}</p>
+    </div>
+
+    <article class="article-width article-body">
+      {{BODY}}
+
+      <div class="article-cta">
+        <p class="t">FC化の進め方、現状を伺って整理します</p>
+        <p class="d">相談は無料です。「何から手をつけるべきか」の順番を、現場を知る実働パートナーがお返しします。</p>
+        <div class="cta-buttons">
+          <a href="/#contact" class="btn-gold">無料で相談する</a>
+          <a href="/fc-package/" class="btn-ghost">構築パッケージを見る</a>
+        </div>
+      </div>
+
+      <div class="author-box">
+        <div class="ab-body">
+          <p class="ab-label">この記事の執筆者</p>
+          <p class="ab-name">本多 亮也(株式会社ORVINCIA 代表取締役)</p>
+          <p>教育ベンチャーのFC本部責任者としてFC本部の0→1構築を実務でリード。現在は自らも店舗を運営しながら、支援先FC本部の現場で加盟開発・SV・契約書設計・既存加盟店の立て直しまで実働で携わる。</p>
+          <a class="ab-link" href="/#rep">代表プロフィールを見る</a>
+        </div>
+      </div>
+    </article>
+
+    <section class="related">
+      <div class="article-width">
+        <p class="r-title">関連記事</p>
+        <div class="guide-grid">
+          <!-- RELATED:START -->
+          <!-- RELATED:END -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="page-width">©2026 ORVINCIA Co., Ltd. <a href="/">トップへ戻る</a></div>
+  </footer>
+</body>
+
+</html>
