@@ -12,6 +12,10 @@
   <meta property="og:description" content="1〜数店舗からのフランチャイズ化を、契約書・営業資料・加盟開発まで実働で支援。相談無料。">
   <meta property="og:url" content="https://orvincia.com/">
   <meta property="og:site_name" content="株式会社ORVINCIA">
+<meta property="og:image" content="https://orvincia.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -144,6 +148,7 @@
     .nav-service { color: var(--gold); font-weight: 500; }
 
     .header-cta {
+      white-space: nowrap;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -407,9 +412,13 @@
       will-change: transform;
     }
 
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
     .carousel-card {
-      min-width: 320px;
-      max-width: 320px;
       padding: 34px 30px 32px;
       background: var(--white);
       border: 1px solid var(--gold-line-soft);
@@ -506,6 +515,19 @@
       font-size: 1.2rem;
       color: var(--navy);
     }
+    .svc-price {
+      margin: 0 0 22px;
+      padding: 12px 14px;
+      width: 100%;
+      background: var(--iv1, #f7f4ec);
+      border-left: 3px solid var(--gold);
+      font-family: "Noto Serif JP", serif;
+      color: var(--navy);
+      line-height: 1.6;
+    }
+    .svc-price strong { font-size: 1.05rem; font-weight: 600; }
+    .svc-price small { display: block; font-size: 0.78rem; color: var(--ink-soft); }
+
     .svc-card p {
       margin: 0 0 26px;
       color: var(--ink-soft);
@@ -764,12 +786,16 @@
         grid-template-columns: 1fr;
       }
 
-      .carousel-card {
-        min-width: 100%;
+      .pillar-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
     @media (max-width: 720px) {
+      .pillar-grid {
+        grid-template-columns: 1fr;
+      }
+
       .header-inner {
         flex-direction: row;
         align-items: center;
@@ -853,12 +879,10 @@
         <span class="nav-group-label">提供サービス</span>
         <a href="/fc-package/" class="nav-service">FC本部構築パッケージ</a>
         <a href="/fc-support/" class="nav-service">FC本部運営支援</a>
-        <a href="#services" onclick="closeMenu()">事業内容</a>
         <a href="#media" onclick="closeMenu()">運営メディア</a>
         <a href="/guide/">FC本部構築ガイド</a>
         <a href="#rep" onclick="closeMenu()">代表について</a>
         <a href="#company" onclick="closeMenu()">会社概要</a>
-        <a href="#contact" onclick="closeMenu()">お問い合わせ</a>
       </nav>
       <a href="#contact" class="header-cta">お問い合わせ</a>
     </div>
@@ -897,39 +921,27 @@
           <p class="section-subtitle">構築・集客・運営・管理の全領域をカバーする一貫支援で、加盟店の成果にコミットします。</p>
         </div>
 
-        <div class="carousel-wrapper fade-in">
-          <div class="carousel-track" id="carousel-track">
-            <article class="carousel-card">
-              <p class="carousel-number">01</p>
-              <h3>本部設計・パッケージ化</h3>
-              <p>理念・業務・収支の再現性を高める本部設計。加盟店が迷わず動けるパッケージを作成します。</p>
-            </article>
-            <article class="carousel-card">
-              <p class="carousel-number">02</p>
-              <h3>加盟店募集マーケティング</h3>
-              <p>ストーリー型LPと広告運用で、共感するオーナー候補を集める獲得戦略を設計します。</p>
-            </article>
-            <article class="carousel-card">
-              <p class="carousel-number">03</p>
-              <h3>営業支援・現場育成</h3>
-              <p>加盟店の営業力を向上させる現場指導と教育体制。収益化まで伴走します。</p>
-            </article>
-            <article class="carousel-card">
-              <p class="carousel-number">04</p>
-              <h3>管理ツール導入</h3>
-              <p>業務の見える化と運営管理を支えるツール設計。本部の意思決定を加速します。</p>
-            </article>
-            <article class="carousel-card">
-              <p class="carousel-number">01</p>
-              <h3>本部設計・パッケージ化</h3>
-              <p>理念・業務・収支の再現性を高める本部設計。加盟店が迷わず動けるパッケージを作成します。</p>
-            </article>
-            <article class="carousel-card">
-              <p class="carousel-number">02</p>
-              <h3>加盟店募集マーケティング</h3>
-              <p>ストーリー型LPと広告運用で、共感するオーナー候補を集める獲得戦略を設計します。</p>
-            </article>
-          </div>
+        <div class="pillar-grid fade-in">
+          <article class="carousel-card">
+            <p class="carousel-number">01</p>
+            <h3>本部設計・パッケージ化</h3>
+            <p>理念・業務・収支の再現性を高める本部設計。加盟店が迷わず動けるパッケージを作成します。</p>
+          </article>
+          <article class="carousel-card">
+            <p class="carousel-number">02</p>
+            <h3>加盟店募集マーケティング</h3>
+            <p>ストーリー型LPと広告運用で、共感するオーナー候補を集める獲得戦略を設計します。</p>
+          </article>
+          <article class="carousel-card">
+            <p class="carousel-number">03</p>
+            <h3>営業支援・現場育成</h3>
+            <p>加盟店の営業力を向上させる現場指導と教育体制。収益化まで伴走します。</p>
+          </article>
+          <article class="carousel-card">
+            <p class="carousel-number">04</p>
+            <h3>管理ツール導入</h3>
+            <p>業務の見える化と運営管理を支えるツール設計。本部の意思決定を加速します。</p>
+          </article>
         </div>
       </div>
     </section>
@@ -945,12 +957,14 @@
             <span class="k">作る</span>
             <h3>FC本部構築パッケージ</h3>
             <p>契約書・営業資料・加盟開発の型・募集LPを一式で。これからFC化する、加盟店募集を始める段階の方へ。</p>
+            <p class="svc-price"><strong>一式 500,000円</strong><small>（税別）／ LP制作のみ 300,000円（税別）</small></p>
             <a href="/fc-package/" class="btn-gold">構築パッケージを見る</a>
           </div>
           <div class="svc-card">
             <span class="k">回す</span>
             <h3>FC本部運営支援</h3>
             <p>加盟開発・SV・既存加盟店の立て直しまで、本部の現場に実働で入る継続支援。加盟が増えた後を回したい方へ。</p>
+            <p class="svc-price"><strong>応相談</strong><small>（継続・スポットとも、支援範囲と関与度に応じてお見積り）</small></p>
             <a href="/fc-support/" class="btn-gold">運営支援を見る</a>
           </div>
         </div>
@@ -1092,88 +1106,6 @@
     }, { threshold: 0.18 });
     fadeElements.forEach((el) => observer.observe(el));
 
-    const track = document.getElementById('carousel-track');
-    const wrapper = document.querySelector('.carousel-wrapper');
-    const cards = Array.from(track.querySelectorAll('.carousel-card'));
-    const visibleCount = 4;
-    const originalCards = cards.slice(0, visibleCount);
-    const originalWidth = originalCards.reduce((sum, card, index) => sum + card.offsetWidth + (index < originalCards.length - 1 ? 24 : 0), 0);
-    let currentX = 0;
-    let startX = 0;
-    let baseX = 0;
-    let isDragging = false;
-    let animationFrameId = null;
-    const autoSpeed = originalWidth / 30;
-
-    function normalizeX(x) {
-      if (x <= -originalWidth) {
-        return x + originalWidth;
-      }
-      if (x >= 0) {
-        return x - originalWidth;
-      }
-      return x;
-    }
-
-    function setTrackX(x) {
-      currentX = normalizeX(x);
-      track.style.transform = `translateX(${currentX}px)`;
-    }
-
-    function animate(time) {
-      if (!animate.lastTime) animate.lastTime = time;
-      const delta = (time - animate.lastTime) / 1000;
-      animate.lastTime = time;
-      if (!isDragging) {
-        setTrackX(currentX - autoSpeed * delta);
-      }
-      animationFrameId = requestAnimationFrame(animate);
-    }
-
-    function startDrag(event) {
-      isDragging = true;
-      wrapper.style.cursor = 'grabbing';
-      startX = event.clientX;
-      baseX = currentX;
-      if ('pointerId' in event) {
-        event.target.setPointerCapture(event.pointerId);
-      }
-    }
-
-    function moveDrag(event) {
-      if (!isDragging) return;
-      const delta = event.clientX - startX;
-      setTrackX(baseX + delta);
-    }
-
-    function endDrag() {
-      isDragging = false;
-      wrapper.style.cursor = 'grab';
-    }
-
-    wrapper.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'mouse' || event.pointerType === 'touch') {
-        startDrag(event);
-      }
-    });
-    wrapper.addEventListener('mousedown', startDrag);
-    wrapper.addEventListener('touchstart', (event) => {
-      if (event.touches.length === 1) {
-        startDrag(event.touches[0]);
-      }
-    });
-    wrapper.addEventListener('pointermove', moveDrag);
-    wrapper.addEventListener('touchmove', (event) => {
-      if (event.touches.length === 1) {
-        moveDrag(event.touches[0]);
-      }
-    }, { passive: false });
-    wrapper.addEventListener('pointerup', endDrag);
-    wrapper.addEventListener('touchend', endDrag);
-    wrapper.addEventListener('pointercancel', endDrag);
-    wrapper.addEventListener('pointerleave', endDrag);
-
-    requestAnimationFrame(animate);
 
     const lines = document.querySelectorAll('.animated-line');
     lines.forEach((line, index) => {
