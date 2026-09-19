@@ -555,6 +555,40 @@
       border: 1px solid var(--gold-line-soft);
     }
 
+    .fact-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin: 26px 0 0;
+      padding: 0;
+    }
+    .fact-strip > div {
+      background: var(--white);
+      border: 1px solid var(--gold-line-soft);
+      padding: 22px 20px;
+    }
+    .fact-strip dt {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+    }
+    .fact-strip dd { margin: 0; color: var(--navy); }
+    .fact-strip .n {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      font-size: 2.1rem;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .fact-strip .u { margin-left: 4px; font-size: 0.9rem; }
+    .fact-strip .t {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
     .rep-position {
       margin: 0 0 8px;
       font-size: 0.8rem;
@@ -785,6 +819,9 @@
       .rep-grid {
         grid-template-columns: 1fr;
       }
+      .fact-strip {
+        grid-template-columns: 1fr 1fr;
+      }
 
       .pillar-grid {
         grid-template-columns: 1fr 1fr;
@@ -1011,7 +1048,7 @@
           <div class="rep-card">
             <p class="rep-position">代表取締役</p>
             <p class="rep-name">本多 亮也</p>
-            <p>教育ベンチャーにてFC本部責任者を経験後、複数のFC本部立ち上げ、運営に携わる。</p>
+            <p>教育ベンチャーにてFC本部責任者を経験後、複数のFC本部立ち上げ、運営に携わる。現在も自ら店舗を運営しながら、支援先のFC本部の現場で加盟開発・SV・契約書設計を実働で担当。</p>
           </div>
           <div class="company-card">
             <p class="card-label">経験と強み</p>
@@ -1022,6 +1059,13 @@
             </ul>
           </div>
         </div>
+
+        <dl class="fact-strip fade-in">
+          <div><dt>運営メディアの掲載本部</dt><dd><span class="n">68</span><span class="u">社</span></dd></div>
+          <div><dt>業種別の比較表</dt><dd><span class="n">11</span><span class="u">業種</span></dd></div>
+          <div><dt>支援先の本部での担当</dt><dd class="t">加盟開発・SV・全店実査・契約書設計</dd></div>
+          <div><dt>自ら運営する店舗</dt><dd class="t">予約・売上・採用まで自分で回す</dd></div>
+        </dl>
       </div>
     </section>
 
