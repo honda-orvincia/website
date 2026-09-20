@@ -327,7 +327,8 @@
     .pkg-body li:last-child { border-bottom: 0; }
     .pkg-body li::before { content: "✓"; color: #fff; background: var(--navy); border-radius: 50%; width: 26px; height: 26px; font-size: .85rem; display: inline-flex; align-items: center; justify-content: center; margin-top: 2px; }
     .pkg-body li b { display: block; font-size: 1.05rem; font-weight: 900; color: var(--navy); }
-    .pkg-body li span { display: block; margin-top: 4px; font-size: .9rem; color: var(--ink-soft); }
+    .pkg-body li > b, .pkg-body li > span { grid-column: 2; }
+    .pkg-body li span { display: block; margin-top: -6px; font-size: .9rem; color: var(--ink-soft); }
     .pkg-body li.core b::after { content: "核"; margin-left: 8px; background: var(--sun); color: var(--navy); font-size: .7rem; padding: 2px 8px; border-radius: 4px; vertical-align: middle; }
     .legal { margin: 18px 0 0; font-size: .78rem; color: var(--ink-soft); }
     .opt { margin: 18px 0 0; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; }
